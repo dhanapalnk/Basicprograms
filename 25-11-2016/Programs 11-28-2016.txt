@@ -1,0 +1,215 @@
+
+
+1.  Intersection of three arrays
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("Intersection of three arrays");
+      Console.WriteLine("Enter the size of the arrays:\t");
+      int N =int.Parse(Console.ReadLine());
+      int[] A=new int[N];
+      int[] B=new int[N];
+      int[] C=new int[N];
+      int[] D=new int[N];
+      int[] E=new int[N];
+      int k=-1,x=-1,c;
+      Console.WriteLine("Enter the elements of A:\n");
+      for(int i=0;i<N;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("\n Inputs of A:");
+      foreach(int a in A)
+      {
+        Console.Write("{0}\t",a);
+      }
+      
+        Console.WriteLine("\n Enter the elements of B:\n");
+      for(int i=0;i<N;i++)
+      {
+        B[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("\n Inputs of B:");
+      foreach(int b in B)
+      {
+        Console.Write("{0}\t",b);
+      }
+      
+      Console.WriteLine("\n Enter the elements of C:\n");
+      for(int i=0;i<N;i++)
+      {
+        C[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("\n Inputs of C:");
+      foreach(int c1 in C)
+      {
+        Console.Write("{0}\t",c1);
+      }
+      
+      for(int i=0;i<N;i++)
+      {
+        for(int j=0;j<N;j++)
+        {
+          if(A[i]==B[j])
+          {
+            k++;
+			  if(k<N)
+			  {
+			  
+		        D[k]=A[i];
+			 
+			  }
+          }
+        }
+      }
+	  
+	  Console.Write("\n");
+      Console.WriteLine("\n Elements of D are:\n");
+      foreach(int d in D)
+      {
+        Console.Write("{0}\t",d);
+      }
+		
+		for(int i=0;i<N;i++)
+      {
+        for(int j=0;j<N;j++)
+        {
+          if(D[i]==C[j])
+          {
+			  
+            x++;
+			  if(x<N)
+			  {
+			
+		   		 E[x]=D[i];
+			 
+			  }
+          }
+        }
+      }
+	  Console.Write("\n");
+      Console.WriteLine("\n Elements of E are:\n");
+      foreach(int e in E)
+      {
+        Console.Write("{0}\t",e);
+      }
+		Console.WriteLine("\n FINAL");
+		for(int i=0;i<N;i++)
+		{
+			int count=0;
+			for(int j=i+1;j<N;j++)
+			{
+				if(E[i]==E[j])
+				{
+					count++;
+				}
+			}
+			if(count==0)
+			{
+				Console.Write("{0}\t",E[i]);
+			}
+			
+		}
+      
+      Console.Write("Removing duplicates\n");
+      int[] occ=new int[N];
+      for(int i=0;i<N;i++)
+      {
+        occ[i]=-1;
+      }
+       for(int i=0;i<N;i++)
+    {
+    c=1;
+    for(int j=i+1;j<N;j++)
+    {
+    if(E[i]==E[j])
+    {
+    c++;
+    occ[j]=0;
+    }
+    
+    }
+    if(occ[i]!=0)
+    {
+    occ[i]=c;
+    
+    }
+    }
+   Console.Write("The intersection of three arrays:\n");
+    for(int i=0;i<N;i++)
+    {
+    
+    if(occ[i]!=0)
+    {
+    Console.WriteLine("{0}",E[i]);
+    }
+    }   }
+}
+     
+
+
+2.Find the pair of elements from each array such that its sum is nearer to the user given value
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.Write("Find the pair of elements from each array such that its sum is nearer to the user given value");
+      Console.WriteLine("Enter the size of an array:\t");
+      int n=int.Parse(Console.ReadLine());
+      int[] A=new int[n];
+      int[] B=new int[n];
+      Console.WriteLine("Enter the elements of A:\n");
+      for(int i=0;i<n;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("\n Enter the elements of B:\n");
+      for(int i=0;i<n;i++)
+      {
+        B[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("Enter the X value:\t");
+      int x=int.Parse(Console.ReadLine());
+      int[] C=new int[n*n];
+      C[0]=A[0]+B[0];
+      int k=1;
+      for(int i=0;i<n;i++)
+      {
+        for(int j=0;j<n;j++)
+        {
+          if(A[i]+B[j]<x)
+          {
+            if(k<n*n)
+            {
+              C[k]=A[i]+B[j];
+              if(C[k]>C[0])
+              {
+                int temp=C[0];
+                C[0]=C[k];
+                C[k]=temp;
+                
+                int temp1=A[0];
+                A[0]=A[i];
+                A[i]=temp1;
+                
+                int temp2=B[0];
+                B[0]=B[j];
+                B[j]=temp2;
+              }
+              k++;
+            }
+          }
+        }
+      }
+      Console.Write("{0}+{1}={2}",A[0],B[0],C[0]);
+     }
+}

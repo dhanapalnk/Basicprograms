@@ -1,0 +1,218 @@
+
+1.Sum of power for given integer value
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Sum of power for given integer value.");
+      Console.WriteLine("Enter the number:\t");
+      int n=int.Parse(Console.ReadLine());
+      string s=n.ToString();
+      int a,b,pdt=1,sum=0;
+      for(int i=0;i<s.Length;i++)
+      {
+        if(i<s.Length-1)
+        {
+          a=((int)s[i])-'0';
+          b=((int)s[i+1])-'0';
+          for(int j=1;j<=b;j++)
+          {
+            pdt*=a;
+          }
+        }
+        if(i==s.Length-1)
+        {
+         pdt=1;
+        }
+        sum+=pdt;
+        pdt=1;  
+      }
+    Console.WriteLine("Sum of power for given integer value {0} is {1}.",n,sum);
+     }
+}
+
+
+2.Encryption
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Encryption");   
+      Console.WriteLine("Enter the string:\t");
+      string A=Console.ReadLine();
+      int a;
+      char c;
+      string final="";
+      for(int i=0;i<A.Length;i++)
+      {
+        a=(int)A[i];
+        if(a!=97)
+        {
+          c=(char)(a-1);
+        }
+        else
+        {
+          c=(char)(a+25);
+        }
+       final+=c; 
+      }
+      Console.Write("Encrypted string is {0}",final);
+    }
+}
+
+
+
+3.Number of 2's between 0 and n
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Number of 2's between 0 and n");
+        int n = 35;
+        char k = '2';
+        int count = 0;
+        string s="";
+        for (int i = 0; i <= n; i++)
+        {
+            s = i.ToString();
+            for (int j = 0; j < s.Length; j++)
+            {
+                if (s[j] == k)
+                {
+                    count++;
+                }
+            }
+            s = "";
+        }
+        Console.WriteLine("Number of 2's between 0 and {0} is {1}.", n, count);
+        Console.Read();
+    }
+}
+
+
+
+4.Remove the given element from the array
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("Remove the given element from the array.");
+      Console.WriteLine("Enter the array size:\t");
+      int n=int.Parse(Console.ReadLine());
+      int[] A=new int[n];
+      int[] B=new int[n];
+      int x=0;
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<n;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("Enter the element to be deleted:\t");
+      int rem=int.Parse(Console.ReadLine());
+      for(int i=0;i<n;i++)
+      {
+        if(A[i]!=rem)
+        {
+          B[x]=A[i];
+          x++;
+        }
+      }
+      
+      foreach(int b in B)
+      {
+        Console.WriteLine(b);
+      }
+     }
+}
+
+
+5.2 digit prime numbers that sum to given N
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Number of 2 digit prime numbers that sum to given N");
+        Console.WriteLine("Enter N value:\t");
+        int N=int.Parse(Console.ReadLine());
+        int count = 0,sum=0;
+        for (int i = 10; i < 100; i++)
+        {
+            count = 0;
+            for (int j = 1; j <= i; j++)
+            {
+                if (i % j == 0)
+                {
+                    count++;
+                }
+            }
+            if (count == 2)
+            {
+                sum += i;
+                if(sum<=N)
+                {
+                    Console.WriteLine("{0}+\t", i);
+                }
+            }
+            
+        }
+        Console.Read();
+    }
+}
+
+
+6.Return possible combinations of k numbers out of 1...n
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Return possible combinations of k numbers out of 1...n");
+        int k =4;
+        int n = 6;
+        int count=0;
+        for (int i = 1; i <=k;i++ )
+        {
+         
+            count +=1 ;
+        
+            for (int j = i+count; j <=k+1;j++)
+            {
+           
+                for (int a = j + 1; a <=n;a++ )
+                {
+                  
+                    Console.Write("({0},{1},{2})\n\n", i, j, a);
+                }
+              
+            }
+            count = 0;
+            
+        }
+        Console.Read();
+    }
+}
+
+

@@ -1,0 +1,395 @@
+
+1.STRING TO CAMEL CASE
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("STRING TO CAMEL CASE");
+      Console.WriteLine("Input the string:\t");
+      string input1=Console.ReadLine();
+      char[] input=input1.ToCharArray();
+      string s="";
+      int a;
+      for(int i=0;i<input.Length;i++)
+      {
+        if(input[i]!=' ')
+        {
+          if(i==0)
+          {
+            a=(int)input[i];
+            if(a>=65 && a<=90)
+            {
+              char lower=(char)(a+32);
+              input[i]=lower;
+              s+=input[i];
+            }
+          }
+          else
+          {
+            s+=input[i];
+          }
+          
+        }
+        else
+        {
+            i=1+i;
+          a=(int)input[i];
+          if(a>=97 && a<=122)
+          {
+            char upper=(char)(a-32);
+            input[i]=upper;
+            s+=input[i];
+          }
+          else
+          {
+            s+=input[i];
+          }
+        
+        }
+      }
+     Console.Write("Camel case:{0}",s);  
+     }
+}
+
+2.HAPPY NUMBERS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       	Console.WriteLine("HAPPY NUMBERS");
+      Console.WriteLine("Enter the number:\t");
+      int number=int.Parse(Console.ReadLine());
+      string str=number.ToString();
+      int digits=str.Length;
+      int n,sum=0;
+     while(digits>1)
+     {
+       while(number>0)
+       {
+         n=number%10;
+         sum+=n*n;
+         number=number/10;
+       }
+       number=sum;
+       sum=0;
+        digits=(number.ToString()).Length;
+     }
+        if(number==1)
+         {
+           Console.WriteLine("HAPPY NUMBERS");
+         }
+      else
+      {
+        Console.WriteLine("NOT");
+      }
+     }
+}
+
+3.MULTIPLICATION OF THE NUMBERS AS STRING
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("MULTIPLICATION OF THE NUMBERS AS STRING");
+      Console.WriteLine("Enter the first number:\t");
+      string first=Console.ReadLine();
+      Console.WriteLine("Enter the second number:\t");
+      string second=Console.ReadLine();
+      int a=int.Parse(first);
+      int b=int.Parse(second);
+      int c=a*b;
+      string result=c.ToString();
+      Console.WriteLine("Multiplication of the given numbers {0} and {1} is {2}",a,b,result);
+     }
+}
+
+
+4.IMPLEMENT THE STRLEN METHOD
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.Write("IMPLEMENT THE STRLEN METHOD");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      int length=0;
+      foreach(char c in input)
+      {
+        length++;
+      }
+      Console.Write("Length of the given string {0} is {1}",input,length);
+     }
+}
+
+5.MINIMUM POSITIVE INTEGER BY WHICH A GIVEN NUMBER SHOULD BE DIVIDED SO THAT HTE RESULT IS AN ODD NUMBER
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("MINIMUM POSITIVE INTEGER BY WHICH A GIVEN NUMBER SHOULD BE DIVIDED SO THAT HTE RESULT IS AN ODD NUMBER");
+      Console.WriteLine("Enter a number:\t");
+      int number=int.Parse(Console.ReadLine());
+      for(int i=1;i<number;i++)
+      {
+        if(number%i==0)
+        {
+          if(i%2!=0)
+          {
+            Console.WriteLine("The positive integer is {0}",i);
+            break;
+          }
+        }
+      }
+     }
+}
+
+6.COUNT THE NUMBER OF PAIRS IN AN ARRAY SUCH THAT A[i]<A[j]
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("COUNT THE NUMBER OF PAIRS IN AN ARRAY SUCH THAT A[i]<A[j]");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      Console.Write("Enter the elements:\t");
+      int[] input=new int[size];
+      int temp,count=0;
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(input[i]>input[j])
+          {
+            temp=input[j];
+            input[j]=input[i];
+            input[i]=temp;
+          }
+        }
+      }
+      for(int i=0;i<size;i++)
+      {
+        Console.Write("{0}",input[i]);
+      }
+      Console.WriteLine("The pairs are:\t");
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          Console.Write("({0},{1})",input[i],input[j]);
+          count++;
+        }
+      }
+      Console.WriteLine("The total number of pairs are {0}",count);
+     }
+}
+
+
+7.FIND THE DIFFERENT NUMBER IN AN ARRAY
+
+using System;
+ using System.Collections.Generic;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("FIND THE DIFFERENT NUMBER IN AN ARRAY");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      Console.Write("Enter the elements:\t");
+      int[] input=new int[size];
+      int temp;
+      ArrayList even=new ArrayList();
+      ArrayList odd=new ArrayList();
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(input[i]>input[j])
+          {
+            temp=input[j];
+            input[j]=input[i];
+            input[i]=temp;
+          }
+        }
+      }
+      for(int i=0;i<size;i++)
+      {
+        if(input[i]%2==0)
+        {
+         even.Add(input[i]);
+        }
+        else
+        {
+         odd.Add(input[i]);
+        }
+      }
+      if(even.Count<odd.Count)
+      {
+        if(even.Count==1)
+        {
+          Console.WriteLine("The different number is:{0}",even[0]);
+        }
+      }
+      else
+      {
+         if(odd.Count==1)
+        {
+          Console.WriteLine("The different number is:{0}",odd[0]);
+        }
+      }
+     }
+}
+
+
+
+8.SUBSTRING WITHOUT USING STRING FUNCTION
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("SUBSTRING WITHOUT USING STRING FUNCTION");
+      Console.WriteLine("Enter hte string:\t");
+      string input=Console.ReadLine();
+      Console.WriteLine("Enter the start position:\t");
+      int start=int.Parse(Console.ReadLine());
+      Console.WriteLine("Enter the end position:\t");
+      int end=int.Parse(Console.ReadLine());
+      string substring="";
+      for(int i=start;i<=end;i++)
+      {
+        substring+=input[i];
+      }
+      Console.WriteLine("The substring is {0}",substring);
+     }
+}
+
+9.IMPLEMENT str.contains METHOD
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       
+      Console.WriteLine("IMPLEMENT str.contains METHOD");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      int count=0,k=0;
+      string result="";
+      Console.WriteLine("Enter the substring to be found:\t");
+      string sub=Console.ReadLine();
+      for(int i=0;i<input.Length;i++)
+      {                
+        if(input[i]==sub[k])
+           for(int j=i;count<sub.Length;j++)
+         {
+          count++;
+          result+=input[j];
+          if(result==sub)
+          {
+            Console.WriteLine("The string {0} contains the substring {1}",input,sub);
+          }
+        
+      }
+        result="";
+        count=0;
+           }
+     }
+}
+
+
+
+10.GROUPING THE ANAGRAMS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("GROUPING THE ANAGRAMS");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      string[] words=new string[size];
+      string temp;
+      Console.WriteLine("Enter the elements:\t");
+      for(int i=0;i<size;i++)
+      {
+        words[i]=Console.ReadLine();
+      }
+       for(int i=0;i<size;i++)
+       {
+         for(int j=i+1;j<size;j++)
+         {
+           if(words[i][0]>words[j][0])
+           {
+             temp=words[j];
+             words[j]=words[i];
+             words[i]=temp;
+           }
+         }
+       }
+      
+      for(int k=0;k<size;k++)
+      {
+         for(int i=0;i<words[k].Length;i++)
+        {
+          for(int j=i+1;j<words[k].Length;j++)
+          {
+            if(words[k][i]>words[k][j])
+            {
+              temp=words[j];
+              words[j]=words[i];
+              words[i]=temp;
+            }
+          }
+        }
+      }
+      foreach(string w in words)
+      {
+         Console.WriteLine(w);  
+      }
+            
+     }
+}

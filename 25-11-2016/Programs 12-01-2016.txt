@@ -1,0 +1,212 @@
+
+
+1.Product array
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Product array");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[] A=new int[size];
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<size;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+      }
+      int[] final=new int[size];
+      int product=1;
+      for(int i=0;i<size;i++)
+      {
+        for(int j=0;j<size;j++)
+        {
+          if(i!=j)
+          {
+            final[i]=(product*=A[j]);
+          }
+        }
+        product=1;
+      }
+      Console.Write("The elements of out\n");
+      foreach(int o in final)
+      {
+        Console.WriteLine(o);
+      }
+     }
+}
+
+
+
+2.Find the character to be removed to make the given string as palindrome.
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Find the character to be removed to make the given string as palindrome.");    
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      string s="";
+      string s1="";
+      string final="";
+      for(int i=0;i<input.Length;)
+      {
+        for(int j=0;j<input.Length;j++)
+        {
+          if(i!=j)
+          {
+            s+=input[j];
+          }
+        }
+        s1=s;
+       
+        s="";
+        for(int k=s1.Length-1;k>=0;k--)
+        {
+          final+=s1[k];
+        }
+        if(final==s1)
+        {
+          Console.WriteLine("After removing {0} at the position {1} in the string becomes palindrome",input[i],i);
+        }
+        final="";
+        s1="";
+        i=i+1;
+      }
+    }
+}
+
+
+3.Check the sum of digits of a given number is palindrome or not
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Check the sum of digits of a given number is palindrome or not");   
+      Console.WriteLine("Enter the number:\t");
+      int n=int.Parse(Console.ReadLine());
+      int sum=0,a;
+      while(n>0)
+      {
+        a=n%10;
+        n=n/10;
+        sum+=a;
+      }
+      int n1=sum;
+      string s=n1.ToString();
+      string p="";
+      for(int i=s.Length-1;i>=0;i--)
+      {
+        p+=s[i];
+      }
+      if(p==s)
+      {
+        Console.WriteLine("Sum of digits of the given number is Palindrome.");
+      }
+      else
+      {
+         Console.WriteLine("Sum of digits of the given number is not Palindrome.");
+      }
+    }
+}
+
+
+4.Print the char N number of times
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Print the char N number of times.");
+        Console.WriteLine("Enter the string:\t");  
+        string s = Console.ReadLine();
+        string n = "";
+        int n1;
+        for (int i = 0; i < s.Length; i++)
+        {
+            n1 = 0;
+            if(i!=s.Length-1)
+            {
+                if (!((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')))
+                {
+                    if (!((s[i + 1] >= 'a' && s[i + 1] <= 'z') || (s[i + 1] >= 'A' && s[i + 1] <= 'Z')))
+                    {
+                        n += s[i];
+                        n1 = int.Parse(n);
+                    }
+                    else
+                    {
+                        n += s[i];
+                        n1 = int.Parse(n);
+                    }
+                }
+            }
+            else
+            {
+                if (!((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')))
+                {                  
+                     n += s[i];
+                     n1 = int.Parse(n);
+                }
+                else
+                {
+                      n += s[i];
+                      n1 = int.Parse(n);
+                }
+             }
+           
+            for (int j = 0; j < n1; j++)
+            {
+                Console.Write("{0}", s[i - (n.Length)]);
+            }
+            n = "";
+         }  
+        
+    }
+}
+
+
+
+5.Return possible combinations of k numbers out of 1...n
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Return possible combinations of k numbers out of 1...n");
+        int k =3;
+        int n = 4;
+        int count;
+        for (int i = 1; i <= n; i++)
+        {
+            count = 0;
+            for (int j = i; j <= n && (count < k); j++)
+            {
+                if (i != j)
+                {                   
+                    Console.Write("({0},{1})",i,j);
+                    count++;
+                }
+            }
+            Console.Write(")");
+        }
+        Console.Read();
+    }
+}

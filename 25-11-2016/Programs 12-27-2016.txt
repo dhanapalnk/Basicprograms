@@ -1,0 +1,327 @@
+
+
+1.In integer array, in the first four numbers if N is present return true else false
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication24
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("In integer array, in the first four numbers if N is present return true else false");
+            Console.WriteLine("Enter the array size:\t");
+            int s = int.Parse(Console.ReadLine());
+            int[] arr = new int[s];
+            int count = 0;
+            Console.WriteLine("Enter the elements:\t");
+            for (int a = 0; a < s;a++ )
+            {
+                arr[a] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("Enter the number:\t");
+            int N = int.Parse(Console.ReadLine());
+            for (int a = 0; a <=3;a++ )
+            {
+                if(arr[a]==N)
+                {
+                    count = 1;
+                    Console.WriteLine("The number N is found.");
+                    break;
+                }
+                else
+                {
+                    count = 0;
+                }
+                
+            }
+            if (count == 0)
+            {
+                Console.WriteLine("The number N is not found.");
+            }
+            Console.ReadLine(); 
+        }
+    }
+}
+
+
+2.Rotate a given string of the length n by m characters with constant extra space in linear time. 
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication24
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Rotate a given string of the length n by m characters with constant extra space in linear time.");
+            Console.WriteLine("Enter the size of an array:\t");
+            int s = int.Parse(Console.ReadLine());
+            string[] arr = new string[s];
+            int b;
+            Console.WriteLine("Enter the elements:\t");
+            for (int a = 0; a < s;a++ )
+            {
+                arr[a] = Console.ReadLine();
+            }
+            Console.WriteLine("Enter the length:\t");
+            int n = int.Parse(Console.ReadLine());
+            for (int a = 0; a <=n;a++ )
+            {
+                b = 0;
+               while(b<s)
+               {
+                   Console.Write("{0}", arr[b][a]);
+                   b++;
+               }
+               Console.Write("\n");
+            }
+            Console.ReadLine(); 
+        }
+    }
+}
+
+
+3.Find if the given strings can be chained to form a circle.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Find if the given strings can be chained to form a circle.");
+            Console.WriteLine("Enter the size of an array:\t");
+            int s = int.Parse(Console.ReadLine());
+            string[] arr = new string[s];
+            string s1 = "";
+            Console.WriteLine("Enter the elements:\t");
+            for(int a=0;a<s;a++)
+            {
+                arr[a] = Console.ReadLine();
+            }
+            for(int a=0;a<s;a++)
+            {
+                int l=arr[a].Length-1;
+                for(int b=a+1;b<s;b++)
+                {
+                     if(arr[a][l]==arr[b][0])
+                     {
+                         s1 += arr[a] + " " + arr[b]+" ";
+                     }
+                }
+          
+            }
+            Console.WriteLine("{0}", s1);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+4.For every star (*) in the string the star and the chars immediately to its left and right are gone. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication26
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("For every star (*) in the string the star and the chars immediately to its left and right are gone.");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            string final = "";
+            for(int a=0;a<str.Length-1;)
+            {
+                if(str[a+1]!='*')
+                {
+                    final += str[a];
+                    a++;
+                }
+                else
+                {
+                    a=a+3;
+                }
+                if(a==str.Length-1)
+                {
+                    final += str[a];
+                }
+            }
+            Console.WriteLine("output:{0}", final);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+5.Given a string and an int n, return a string made of the first n characters of the string, followed by the first n-1 characters of the string, and so on. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication26
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Return a string made of the first n characters of the string, followed by the first n-1 characters of the string, and so on.");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            string final = "";
+            Console.WriteLine("Input N value:\t");
+            int n = int.Parse(Console.ReadLine());
+            while(n>0)
+            {
+                for (int a = 0; a < n; a++)
+                {
+                    final += str[a];
+                }
+                n--;
+            }
+           
+            Console.WriteLine("Output:{0}", final);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+6.Given a non-empty string and an int N, return the string made starting with char 0, and then every Nth char of the string. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication26
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given a non-empty string and an int N, return the string made starting with char 0, and then every Nth char of the string.");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            string final = "";
+            Console.WriteLine("Input N value:\t");
+            int n = int.Parse(Console.ReadLine());
+            for (int a = 0; a < str.Length;a++ )
+            {
+                if(a%n==0)
+                {
+                    final += str[a];
+                }
+            }
+            Console.WriteLine("Output:{0}", final);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+7.Given a string and an int n, return a string made of the first and last n chars from the string. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication26
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given a string and an int n, return a string made of the first and last n chars from the string.");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            Console.WriteLine("Enter the n value:\t");
+            int n = int.Parse(Console.ReadLine());
+            string final = "";
+            for (int a = 0; a < str.Length;a++ )
+            {
+                if(a<n || a>=str.Length-3)
+                {
+                    final += str[a];
+                } 
+            }
+            Console.WriteLine("Output:{0}", final);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+8.Given two strings, word and a separator, return a big string made of count occurrences of the word, separated by the separator string. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication26
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Return a big string made of count occurrences of the word, separated by the separator string. ");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            Console.WriteLine("Enter the word separator:\t");
+            char s = char.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the number of occurences:\t");
+            int n = int.Parse(Console.ReadLine());
+            string final = "";
+            for (int a = 0; a < n;a++ )
+            {
+                if(a<n-1)
+                {
+                    final += (str + s);
+                }
+                else
+                {
+                    final += str;
+                }
+            }
+            Console.WriteLine("Output:{0}\t",final);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+

@@ -1,0 +1,258 @@
+
+1. Given a non-empty string like "Code" return a string like "CCoCodCode" 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given a non-empty string like Code return a string like CCoCodCode.");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            for (int a = 0; a <=str.Length;a++ )
+            {
+                for(int b=0;b<a;b++)
+                {
+                    Console.Write("{0}",str[b]);
+                }
+            }
+            
+            Console.ReadLine();
+        }
+    }
+}
+
+
+2.Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien" 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            for (int a = 0; a < str.Length;a++ )
+            {
+                Console.Write("{0}", str[a]);
+                if(a%2!=0)
+                {
+                    a = a + 2;
+                }
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3.Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo" 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given a string, return a new string made of every other char starting with the first.");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            for (int a = 0; a < str.Length;a=a+2 )
+            {
+                Console.Write("{0}", str[a]);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+4.Given a string, return a version where all the "x" have been removed. Except an "x" at the very start or end should not be removed .
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given a string, return a version where all the x have been removed. Except an x at the very start or end should not be removed .");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            for (int a = 0; a < str.Length;a++)
+            {
+                if(a==0 || a==str.Length-1)
+                {
+                    if(str[a]=='x')
+                    {
+                        Console.Write("{0}", str[a]);
+                    }
+                }
+                else
+                {
+                    if (str[a] != 'x')
+                    {
+                        Console.Write("{0}", str[a]);
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+5.Given a string, find minimum number of deletions required so that there will be no two consecutive repeating characters in the string 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given a string, find minimum number of deletions required so that there will be no two consecutive repeating characters in the string.");
+            Console.WriteLine("Enter the string:\t");
+            string str = Console.ReadLine();
+            int count = 1;
+            for (int a = 0; a < str.Length-2;a++)
+            {
+               if(str[a]==str[a+1])
+               {
+                   count += 1;
+               }
+            }
+            Console.WriteLine("Minimum number of deletions required so that there will be no two consecutive repeating characters in the string-{0}", count);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+6.Get the two string array, remove the words from the first array which starts with a and g letter, remove the words which ends with n and e from second input array ignore the case in both arrays and display the remaining elements in single array 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Get the two string array, remove the words from the first array which starts with a and g letter, remove the words which ends with n and e from second input array ignore the case in both arrays and display the remaining elements in single array.");
+            Console.WriteLine("Enter the size of first array:\t");
+            int first = int.Parse(Console.ReadLine());
+            string[] arr1 = new string[first];
+            Console.WriteLine("Enter the elements of first array:\t");
+            for (int a = 0; a < first; a++)
+            {
+                arr1[a] = Console.ReadLine();
+            }
+            
+            Console.WriteLine("Enter the size of second array:\t");
+            int second = int.Parse(Console.ReadLine());
+            string[] arr2 = new string[second];
+            Console.WriteLine("Enter the elements of second array:\t");
+            for (int a = 0; a < second; a++)
+            {
+                arr2[a] = Console.ReadLine();
+            }
+
+            List<string> arr3 = new List<string>();
+            for (int a = 0; a < first; a++)
+            {
+                if (!(arr1[a][0] == 'a' || arr1[a][0] == 'g' || arr1[a][0] == 'A' || arr1[a][0] == 'G'))
+                {
+                    arr3.Add(arr1[a]);
+                }
+            }
+            for (int a = 0; a < second; a++)
+            {
+                int l=arr2[a].Length-1;
+                if (!(arr2[a][l] == 'n' || arr2[a][l] == 'e' || arr2[a][l] == 'N' || arr2[a][l] == 'E'))
+                {
+                    arr3.Add(arr2[a]);
+                }
+            }
+            Console.WriteLine("The resultant array:");
+            foreach(string s in arr3)
+            {
+                Console.WriteLine("{0}", s);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+7.Get the string array and print them as single string 
+
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication25
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Get the string array and print them as single string");
+            Console.WriteLine("Enter the size of an array:\t");
+            int s = int.Parse(Console.ReadLine());
+            string[] arr = new string[s];
+            Console.WriteLine("Enter the elements:\n");
+            for (int a = 0; a < s;a++ )
+            {
+                arr[a] = Console.ReadLine();
+            }
+            for (int a = 0; a < s;a++ )
+            {
+                Console.Write("{0}\t", arr[a]);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+

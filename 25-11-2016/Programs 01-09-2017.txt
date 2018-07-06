@@ -1,0 +1,291 @@
+
+1.Good string.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication184
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Good string.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            int count = 0;
+            for(int i=0;i<s.Length-1;i++)
+            {
+                if((((int)s[i]==((int)s[i+1])+1)) ||( (int)s[i] == ((int)s[i + 1]) -1))
+                {
+                    count++;
+                }
+            }
+            if(count==s.Length-1)
+            {
+                Console.WriteLine("The given string is a good string.");
+            }
+            else
+            {
+                Console.WriteLine("The given string is not a good string.");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+2.Keypad typing.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication184
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Keypad typing.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            string result = "";
+            for(int i=0;i<s.Length;i++)
+            {
+                if(s[i]>='a' && s[i]<='c')
+                {
+                    result += '2';
+                }
+                else if(s[i]>='d' && s[i]<='f')
+                {
+                    result += '3';
+                }
+                else if(s[i]>='g'&& s[i]<='i')
+                {
+                    result += '4';
+                }
+                else if(s[i]>='j' && s[i]<='l')
+                {
+                    result += '5';
+                }
+                else if(s[i]>='m' && s[i]<='o')
+                {
+                    result += '6';
+                }
+                else if(s[i]>='p'&& s[i]<='s')
+                {
+                    result += '7';
+                }
+                else if(s[i]>='t' && s[i]<='v')
+                {
+                    result += '8';
+                }
+                else if(s[i]>='w'&&s[i]<='z')
+                {
+                    result += '9';
+                }
+            }
+            Console.WriteLine("Decimal representation of the given string {0} is {1}", s, result);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3.Third largest element without sorting.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication183
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Third largest element without sorting.");
+            Console.WriteLine("Enter the size of an array:\t");
+            int s = int.Parse(Console.ReadLine());
+            int[] arr = new int[s];
+            Console.WriteLine("Enter the elements :\t");
+            for(int i=0;i<s;i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            int max = 0,count=0;
+            for(int i=0;i<s-1;i=i+1)
+            {
+                if(arr[i]<arr[i+1])
+                {
+                    max = arr[i];
+                    count++;
+                }
+                if(count==3)
+                {
+                    Console.WriteLine("Third largest element ={0}", arr[i]);
+                    break;
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+4.Complete string 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication184
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Complete string.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            int count = 0;
+            for(int i=0;i<s.Length;i++)
+            {
+               if(s[i]>='a' && s[i]<='z')
+                {
+                    count++;
+                }
+            }
+            if(count==26)
+            {
+                Console.WriteLine("The given string is a complete string.");
+            }
+            else
+            {
+                Console.WriteLine("The given string is not a complete string.");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+5.Binary string 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication184
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Binary string.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            int count = 0;
+            for(int i=0;i<s.Length;i++)
+            {
+               if(s[i]=='0' || s[i]=='1')
+                {
+                    count++;
+                }
+            }
+            if(count==s.Length)
+            {
+                Console.WriteLine("The given string is a binary string.");
+            }
+            else
+            {
+                Console.WriteLine("The given string is not a binary string.");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+6.Count the number of perfect squares.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication186
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Count the number of perfect squares.");
+            Console.WriteLine("Enter the number:\t");
+            int n = int.Parse(Console.ReadLine());
+            int count = 0,s=0,i=1;
+            while(s<n)
+            {
+                s = i * i;
+                count++;
+                i++;
+                Console.Write("{0}\t", s);
+            }
+            Console.WriteLine("\nNumber of perfect squares within the given number is {0}", count-1);
+            Console.ReadLine();
+        }
+    }
+}
+
+7.Count characters at same position as in English alphabets
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication187
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Count characters at same position as in English alphabets.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            int count = 0;
+            for(int i=0;i<s.Length;i++)
+            {
+                if((int)s[i]>=65 && (int)s[i]<=90)
+                {
+                    if(i==(int)s[i]-65)
+                    {
+                        count++;
+                    }
+                }
+                if ((int)s[i] >= 97 && (int)s[i] <= 122)
+                {
+                    if (i == (int)s[i] - 97)
+                    {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine("{0} characters are at the same position as in English alphabets.",count);
+            Console.ReadLine();
+        }
+    }
+}
+

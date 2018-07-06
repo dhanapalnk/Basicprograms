@@ -1,0 +1,203 @@
+
+
+1.Number of times digit N occurs in the prime number given in a range
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication15
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Number of times digit N occurs in the prime number given in a range");
+            Console.WriteLine("Input 1:\t");
+            int n = int.Parse(Console.ReadLine());
+            string N1 = n.ToString();
+            char[] N = N1.ToCharArray();
+            Console.WriteLine("Input 2:\t");
+            int start = int.Parse(Console.ReadLine());
+            Console.WriteLine("Input 3:\t");
+            int end = int.Parse(Console.ReadLine());
+            int count = 0,count1=0;
+            for(int a=start;a<end;a++)
+            {
+                count = 0;
+                for(int b=1;b<=a;b++)
+                {                   
+                    if(a%b==0)
+                    {
+                        count++;
+                    }
+                }
+                if(count==2)
+                {
+                    string s1 = a.ToString();
+                    char[] s = s1.ToCharArray();
+                    for(int c=0;c<s.Length;c++)
+                    {
+                        if(s[c]==N[0])
+                        {
+                            count1++;
+                        }
+                    }
+                }
+                
+            }
+            Console.WriteLine("Number of {0} in the given range is {1}", n, count1);   
+            Console.ReadLine();
+        }
+    }
+}
+
+
+2.Top K usernames who logged into the system the most
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication15
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Top K usernames who logged into the system the most");
+            Console.WriteLine("Enter the number of users:\t");
+            int n = int.Parse(Console.ReadLine());
+            string[] u = new string[n];
+            int[] sum = new int[n];
+            int[] occ = new int[n];
+            int s,count;
+            Console.WriteLine("Enter the usernames \n");
+            for(int a=0;a<n;a++)
+            {
+                u[a] = Console.ReadLine();
+            }
+            Console.WriteLine("Enter the K value:\t");
+            int k = int.Parse(Console.ReadLine());
+            for (int b = 0; b < n;b++)
+            {
+                s = 0;
+                for(int c=0;c<u[b].Length;c++)
+                {
+                    s += (int)u[b][c];
+                }
+                sum[b] = s;
+            }
+            for (int b = 0; b < n-1;b++ )
+            {
+                for(int c=b+1;c<n;c++)
+                {
+                    if(sum[b]>sum[c])
+                    {
+                        int temp = sum[c];
+                        sum[c] = sum[b];
+                        sum[b] = temp;
+
+                        string temp1 = u[c];
+                        u[c] = u[b];
+                        u[b]=temp1;
+                    }
+                }
+            }
+            for (int a = 0; a < n;a++ )
+            {
+                occ[a] = -1;
+            }
+                for (int b = 0; b < n - 1; b++)
+                {
+                    count = 1;
+                    for (int c = b + 1; c < n; c++)
+                    {
+                        if (u[b] == u[c])
+                        {
+                            count++;
+                            occ[c] = 0;
+                        }
+                    }
+                    if(occ[b]!=0)
+                    {
+                        occ[b] = count;
+                    }
+                }
+                for (int a = 0; a < n;a++ )
+                {
+                    if(occ[a]>=k)
+                    {
+                        Console.WriteLine("{0}-({1})",u[a],occ[a]);
+                    }
+                }
+
+                    Console.ReadLine();
+        }
+    }
+}
+
+
+3.Delete one of two consecutive digits and return greatest of all results
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication14
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Delete one of two consecutive digits and return greatest of all results.");
+            //Console.WriteLine("Input the  integer:\t");
+            //int i = int.Parse(Console.ReadLine());
+            int i = 11002133;
+            string s = i.ToString(),s1="";
+            int count=0;
+            for(int a=0;a<s.Length;)
+            {
+                if(a<s.Length-2)
+                {
+                    if(s[a]==s[a+1])
+                    {
+                        count++;
+                        if(count==1)
+                        {
+                            s1 += s[a]; 
+                            a = a + 2;
+                            
+                        }
+                        else
+                        {
+                            s1 += (s[a]);
+                            s1 += s[a + 1];
+                            a=a+1;
+                            
+                        }
+                        
+                    }
+                    else
+                    {
+                        s1 += s[a];
+                        a = a + 1;
+                        
+                    }
+                }
+                else
+                {
+                    s1 += s[a];
+                }
+            }
+            Console.WriteLine("s1 ={0}",s1);
+            Console.ReadLine();
+        }
+    }
+}

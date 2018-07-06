@@ -1,0 +1,186 @@
+1.REVERSE A STRING
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("REVERSE A STRING");
+      Console.WriteLine("Enter the string:");
+      string input=Console.ReadLine();
+      int i;
+      string reverse="";
+      for(i=input.Length-1;i>=0;i--)
+      {
+        reverse+=input[i];
+      }
+      Console.WriteLine("The reverse of given string {0} is {1}",input,reverse);
+      
+     }
+}
+
+2.FACTORIAL OF A NUMBER
+
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("FACTORIAL OF A GIVEN NUMBER");
+      Console.WriteLine("Enter a number:\t");
+     BigInteger  number=BigInteger.Parse(Console.ReadLine());
+     BigInteger  i;
+    BigInteger  fact=1;
+      for(i=number;i>0;i--)
+      {
+        fact*=i;
+      }
+      Console.WriteLine("The factorial of a given number {0} is {1}",number,fact);
+     }
+}
+
+3.REVERSE THE DIGITS OF AN INTEGER
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("REVERSE THE DIGITS OF AN INTEGER");
+      Console.WriteLine("Enter the number:\t");
+      int number=int.Parse(Console.ReadLine());
+      string input=number.ToString("00");
+      int i;
+      string result="";
+      for(i=input.Length-1;i>=0;i--)
+      {
+        result +=input[i];
+      }
+      Console.WriteLine("The reverse of {0} is {1}",number,result);
+     }
+}
+
+4.STRING TO INTEGER CONVERSION
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("STRING TO INTEGER CONVERSION");
+      Console.WriteLine("Enter the string:");
+      string input=Console.ReadLine();
+      string number="";
+      int i;
+      for(i=0;i<input.Length-1;i++)
+      {
+        if((input[i]=='1' )||(input[i]== '2') || (input[i]=='3')||(input[i]== '3') || (input[i]=='4') ||(input[i]== '5') || (input[i]=='6') ||(input[i]== '7') ||(input[i]== '8')|| (input[i]=='9')||(input[i]=='0'))
+        {
+          number+=input[i];
+        }
+      }
+      int result=Convert.ToInt32(number);
+      Console.WriteLine("The integer of given string {0} is  {1}",input,result);
+     }
+}
+
+5.COUNT THE PRIME NUMBER IN A GIVEN RANGE
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("COUNT THE PRIME NUMBER IN A GIVEN RANGE");
+      Console.WriteLine("Enter the range:\t");
+      int range=int.Parse(Console.ReadLine());
+      int i,j,count=0,count1=0;
+      for(i=1;i<=range;i++)
+      {
+        for(j=1;j<=i;j++)
+        {
+          if(i%j==0)
+          {
+            count++;
+          }
+           
+        } 
+        if(count==2)
+            {
+              count1++;
+            }
+        count=0;
+      }
+      Console.WriteLine("The total number of Primes in the given range {0} is  {1}",range,count1);
+      
+     }
+}
+
+6.CHECK THE GIVEN DAY IS HOLIDAY OR WORKING DAY
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("CHECK THE GIVEN DAY IS HOLIDAY OR WORKING DAY");
+      Console.WriteLine("Enter the  day:\t");;
+      string day=Console.ReadLine();
+      if((day=="Monday")||(day=="Tuesday")||(day=="Wednesday")||(day=="Thursday")||(day=="Friday")||(day=="Saturday"))
+      {
+        Console.WriteLine("The given day is working day");
+      }
+      else if(day=="Sunday")
+      {
+        Console.WriteLine("The given day is holiday");
+      }
+       else
+       {
+         Console.WriteLine("Enter the proper day");
+       }
+     }
+}
+
+7.REVERSE THE STRING AND REMOVE THE VOWELS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("REVERSE THE STRING AND REMOVE THE VOWELS");
+      Console.WriteLine("Enter the string:");
+      string input=Console.ReadLine();
+      int i;
+      string reverse="";
+      string output="";
+      for(i=input.Length-1;i>=0;i--)
+      {
+        reverse+=input[i];
+      }
+      Console.WriteLine("The reversed string is {0}",reverse);
+      for(i=0;i<reverse.Length-1;i++)
+      {
+        if(!(reverse[i]=='a' || reverse[i]=='A' || reverse[i]=='e' || reverse[i]=='E' || reverse[i]=='i' || reverse[i]=='I' || reverse[i]=='o' || reverse[i]=='O' || reverse[i]=='u' || reverse[i]=='U'))
+        {
+          output+=reverse[i];
+        }
+      }
+      Console.WriteLine("The reversed string without vowels is {0}",output);
+     }
+}

@@ -1,0 +1,172 @@
+
+
+1.Email validation
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication16
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Email validation");
+            Console.WriteLine("Enter the email address:\t");
+            string s = Console.ReadLine();
+            string s1 = ".com";
+            string s2 = "";
+            int count = 0,count1=0;
+            for(int a=0;a<s.Length;a++)
+            {
+                if(s[a]=='@')
+                {
+                   if(a>2)
+                    {
+                        count++;
+                    }
+                   else
+                   {
+                       count--;
+                   }
+                }
+                if (s[a] == '.' && s[a - 6] == '@')
+                {
+                    count1++;
+                }
+                if(a==s.Length-4)
+                {
+                    for(int b=a;b<s.Length;b++)
+                    {
+                        s2 += s[b];
+                    }
+                }
+              
+            }
+            if((count!=1 || count<=0) || (count1!=1 || count1==0)||(s2!=s1))
+            {
+                Console.WriteLine(" {0}-{1}, Invalid email",count,s2);
+            }
+           
+            else
+            {
+                Console.WriteLine("{0}-{1}, Valid email",count,s2);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+2.sum of two elements closest to 0
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication17
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("sum of two elements closest to 0");
+            Console.WriteLine("Enter the size of an array:\t");
+            int n = int.Parse(Console.ReadLine());
+            int[] final = new int[n];
+            int[] first = new int[n];
+            int[] second = new int[n];
+            int[] a = new int[n];
+            Console.WriteLine("Enter the elements:\t");
+            for(int b=0;b<n;b++)
+            {
+                a[b] = int.Parse(Console.ReadLine());
+            }
+            for(int c=0;c<n-1;c++)
+            {
+                for(int d=c+1;d<n;d++)
+                {
+                    if(a[c]+a[d]<0)
+                    {
+                        final[c] = a[c] + a[d];
+                        first[c] = a[c];
+                        second[c] = a[d];
+                    }
+                    
+                }
+            }
+            for(int c=0;c<n-1;c++)
+            {
+                for(int d=c+1;d<n;d++)
+                {
+                    if(final[c]>final[d])
+                    {
+                        int temp=final[d];
+                        final[d] = final[c];
+                        final[c] = temp;
+
+                        int temp1 = first[d];
+                        first[d] = first[c];
+                        first[c] = temp1;
+                        
+                        int temp2 = second[d];
+                        second[d] = second[c];
+                        second[c] = temp2;
+
+
+                    }
+                }
+            }
+            Console.WriteLine("The sum of two elements {0} +{1} is closet to zero {2}",first[0],second[0],final[0]);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3. Shuffle the characters of a string without repeating same characters as ones neighbours
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication16
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Shuffle the characters of a string without repeating same characters as ones neighbours");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            string s1 = "";
+            for (int a = 0; a < s.Length-1;a++)
+            {
+                if(s[a]!=s[a+1])
+                {
+                    s1 += s[a];   
+                }
+                else
+                {
+                    s1 += (s[a]);
+                 //   s1 += s[a + 2];
+                }
+                if(a==s.Length-2)
+                {
+                    if(s[a]!=s[a+1])
+                    {
+                       // s1 += s[a];
+                        s1 += s[a+1];
+                    }
+                }
+            }
+            Console.WriteLine("{0}",s1);
+                Console.ReadLine();
+        }
+    }
+}

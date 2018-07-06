@@ -1,0 +1,277 @@
+
+1.Find the Collatz Series
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication182
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Collatz Series");
+            Console.WriteLine("Enter the number:\t");
+            int n = int.Parse(Console.ReadLine());
+            int num = n;
+            if(num>0)
+            {
+                while(num>0)
+                {
+                    if(num%2==0)
+                    {
+                        num = num / 2;
+                    }
+                    else
+                    {
+                        num = (3 * num) + 1;
+                    }
+                    if(num==1)
+                    {
+                        Console.WriteLine("{0}", num);
+                        break;
+                    }
+                    Console.WriteLine("{0}", num);
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+2.Retrieve the odd numbers in the given input number. Add and subtract it consecutively and return the result.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication181
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Retrieve the odd numbers in the given input number. Add and subtract it consecutively and return the result.");
+            //  Console.WriteLine("Enter the number:\t");
+            //int n = int.Parse(Console.ReadLine());
+            int n = 213579860;
+            string s = n.ToString();
+            string s1 = "";
+            for(int i=s.Length-1;i>=0;i--)
+            {
+                s1 += s[i];
+            }
+            int num = int.Parse(s1);
+            Console.WriteLine("num={0}", num);
+            int count = 0,sum=0;
+            
+            while(num>0)
+            {
+                int a = num % 10;
+                num = num / 10;
+                if(a%2!=0)
+                {
+                    count++;
+                    if (count == 1)
+                    {
+                        sum = a;
+                    }
+                    else
+                    {
+                        if (count % 2 != 0)
+                        {
+                            sum -= a;
+                        }
+                        else
+                        {
+                            sum += a;
+                        }
+                    }
+                }           
+            }
+            Console.WriteLine("Result:{0}", sum);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3.Amicable pair or not 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication181
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Amicable pair or not");
+            Console.WriteLine("Enter the first number:\t");
+            int first = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the second number:\t");
+            int second = int.Parse(Console.ReadLine());
+            int sum = 0,sum1=0;
+            for(int i=1;i<first;i++)
+            {
+                if(first%i==0)
+                {
+                    sum += i;
+                }
+            }
+            Console.WriteLine("sum:{0}", sum);
+
+            for (int i = 1; i < second; i++)
+            {
+                if (second % i == 0)
+                {
+                    sum1 += i;
+                }
+            }
+            Console.WriteLine("sum1:{0}", sum1);
+
+            if(sum==second && sum1==first)
+            {
+                Console.WriteLine("Amicable pair"); 
+            }
+            else
+            {
+                Console.WriteLine("Not an amicable pair.");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+4.Longest and Smallest Palindromic,NonPalindromic string
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Longest and Smallest Palindromic,NonPalindromic string");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            string s1 = "";
+            string s2 = "";
+            List<string> palin = new List<string>();
+            List<string> nonpalin = new List<string>();
+            for (int i=-1;i<s.Length-2;i++)
+            {
+                s1 = ""; 
+                for (int j=i+1;j<s.Length;j++)
+                {
+                    s1 += s[j];
+                    for(int k=s1.Length-1;k>=0;k--)
+                    {                        
+                        s2 += s1[k];
+                    }
+                    if(s1==s2 && s1.Length>1)
+                    {
+                        palin.Add(s2);
+                    }
+                    if(s1!=s2 && s1.Length>1)
+                    {
+                        nonpalin.Add(s1);
+                    }
+                    s2 = "";
+                }
+                
+            }
+           
+            Console.WriteLine("PALINDROME STRINGS");
+            for (int i=0;i<(palin.Count)-1;i++)
+            {
+                for (int j = i+1; j < (palin.Count) - 1; j++)
+                {
+                    if(palin[i].Length<palin[j].Length)
+                    {
+                        string temp = palin[j];
+                        palin[j] = palin[i];
+                        palin[i] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("Longest-{0}", palin[0]);
+            Console.WriteLine("Smallest-{0}", palin[palin.Count-1]);
+
+            Console.WriteLine("NON-PALINDROME STRINGS");
+            for (int i = 0; i < (nonpalin.Count) - 1; i++)
+            {
+                for (int j = i + 1; j < (nonpalin.Count) - 1; j++)
+                {
+                    if (nonpalin[i].Length < nonpalin[j].Length)
+                    {
+                        string temp = nonpalin[j];
+                        nonpalin[j] = nonpalin[i];
+                        nonpalin[i] = temp;
+                    }
+                }
+            }
+            Console.WriteLine("Longest-{0}", nonpalin[0]);
+            Console.WriteLine("Smallest-{0}", nonpalin[nonpalin.Count-1]);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+5.For each element in the array check whether there exist a smaller element on the next immediate position of the array. If present print the smaller element else print -1.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("For each element in the array check whether there exist a smaller element on the next immediate position of the array. If present print the smaller element else print -1");
+            Console.WriteLine("Enter the size of an array:\t");
+            int s = int.Parse(Console.ReadLine());
+            int[] arr = new int[s];
+            Console.WriteLine("Enter the elements:\n");
+            for(int i=0;i< s;i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            for(int i=0;i<s-2;i++)
+            {
+                if(arr[i+1]<arr[i])
+                {
+                    Console.Write("{0}", arr[i + 1]);
+                }
+                else
+                {
+                    Console.Write("{0}", -1);
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}

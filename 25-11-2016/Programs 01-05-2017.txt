@@ -1,0 +1,305 @@
+
+1.Sexy prime pairs within a range.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication178
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Sexy prime pairs within a range.");
+            Console.WriteLine("Enter the range:\t");
+            int r = int.Parse(Console.ReadLine());
+            int count,count1;
+            Console.WriteLine("The list are:\n");
+            for (int i=2;i<=r;i++)
+            {
+                count = 0;
+                count1 = 0;
+                for(int j=1;j<=i;j++)
+                {
+                    if(i%j==0)
+                    {
+                        count++;
+                    }
+                }
+                if(count==2)
+                {
+                    int k = i + 6;
+                    for(int a=1;a<=k;a++)
+                    {
+                        if(k%a==0)
+                        {
+                            count1++;
+                        }
+                    }
+                    if(count1==2)
+                    {
+                        Console.WriteLine("({0},{1})", i, k);
+                    }
+                 }
+            }
+           Console.ReadLine();
+        }
+    }
+}
+
+2.Kaprekar number
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication178
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Kaprekar number.");
+            Console.WriteLine("Input a number:\t");
+            long n = int.Parse(Console.ReadLine());
+            long squ = n * n;
+            Console.WriteLine("The square of given number {0} is {1}", n, squ);
+            string n1 = n.ToString();
+            string squ1 = squ.ToString();
+            long a = 0;
+            string temp = "";
+            for (int i = squ1.Length - 1; i >= 0; i--)
+            {
+                temp = squ1[i] + temp;
+                if (i != 0)
+                {
+                    if (temp.Length == n1.Length)
+                    {
+                        a += long.Parse(temp);
+                        temp = "";
+                    }
+                }
+
+                if (i == 0)
+                {
+                    if (temp.Length <= n1.Length)
+                    {
+                        a += long.Parse(temp);
+                        temp = "";
+                    }
+                }
+
+            }
+            if (a == n)
+            {
+                Console.WriteLine("Yes, the given number is Kaprekar");
+            }
+            else
+            {
+                Console.WriteLine("No,the given number is not Kaprekar");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3.Square root of a number.
+
+4.Print the sum of the power value for the numbers of the digits given.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication180
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Print the sum of the power value for the numbers of the digits given.");
+            Console.WriteLine("Enter a number:\t");
+            int n = int.Parse(Console.ReadLine());
+            string s = n.ToString();
+            int sum = 0,power = 1;
+            int l = s.Length;
+            while(n>0)
+            {
+                int a = n % 10;
+                n /= 10;
+                for(int i=0;i<l;i++)
+                {
+                    power *= a;
+                }
+                sum += power;
+                power = 1;
+            }
+            Console.Write("{0}",sum);
+            Console.ReadLine();
+        }
+    }
+}
+
+5.Magic numbers.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication180
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Magic Number .");
+            Console.WriteLine("Enter a number:\t");
+            int n = int.Parse(Console.ReadLine());
+            int num = n;
+            int sum = 0;
+            while(n>0)
+            {
+                int a = n % 10;
+                n = n / 10;
+                sum+= a;
+            }
+            Console.Write("{0}\t", sum);
+            string s = " ";
+            string s1 = sum.ToString();
+            for (int i=s1.Length-1 ; i >= 0;i--)
+            {
+                s += s1[i];
+            }
+            Console.WriteLine("{0}", s);
+            int sum1 = int.Parse(s);
+            if((sum*sum1)==num)
+            {
+                Console.WriteLine("The given number {0} is a magic number.",num);
+            }
+            else
+            {
+                Console.WriteLine("The given number {0} is not a magic number.",num);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+6.ugly numbers.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication180
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Ugly Number within a range.");
+            Console.WriteLine("Enter the limit:\t");
+            int l = int.Parse(Console.ReadLine());
+            int i = 1;
+            while(i<=l)
+            {
+                if(i%2==0 || i%3==0 || i%5==0)
+                {
+                    Console.WriteLine("{0}", i);
+                }
+                i++;
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+7.nth fibonacci number.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication180
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Nth Fibonaci Number.");
+            Console.WriteLine("Enter the limit:\t");
+            int l = int.Parse(Console.ReadLine());
+            long a = 0, b = 1,c;
+            int count = 1;
+            c = a + b;
+            for(int i=0;i<l;i++)
+            {
+                c = a + b;
+                count++;
+                if(count==l)
+                {
+                    Console.Write("{0}\t", c);
+                }
+                a = b;
+                b = c;
+            }
+            
+            Console.ReadLine();
+        }
+    }
+}
+
+
+8.Abundant number.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication180
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Abundant Number.");
+            Console.WriteLine("Enter the limit:\t");
+            int l = int.Parse(Console.ReadLine());
+            int sum = 0;
+            for(int i=1;i<=l;i++)
+            {
+                for(int j=1;j<i;j++)
+                {
+                    if(i%j==0)
+                    {
+                        sum += j;
+                    }
+                }
+                if(sum>i)
+                {
+                    Console.Write("{0}\t", i);
+                }
+                sum = 0;
+            }
+            Console.ReadLine();
+        }
+    }
+}

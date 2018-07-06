@@ -1,0 +1,254 @@
+
+
+1.Find an integer from the array which is equal to its index
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Find an integer from the array which is equal to its index");
+      Console.WriteLine("Enter the size of an array :\t");
+      int s=int.Parse(Console.ReadLine());
+      int[] A=new int[s];
+      Console.WriteLine("Enter the elements:\t");
+      for(int i=0;i<s;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+        if(i==A[i])
+        {
+          Console.WriteLine("{0}",A[i]);
+        }
+      }
+      
+     }
+}
+
+
+
+2.Find the unique integer
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Find the unique integer");
+        Console.WriteLine("Enter the size of an array:\t");
+        int s = int.Parse(Console.ReadLine());
+        int[] A = new int[s];
+        int[] occ = new int[s];
+        for (int i = 0; i < s; i++)
+        {
+            occ[i] = -1;
+        }
+        int[] final = new int[s];
+        Console.WriteLine("Enter the elements:\n");
+        for (int i = 0; i < s; i++)
+        {
+            A[i] = int.Parse(Console.ReadLine());
+        }
+        for (int i = 0; i < s; i++)
+        {
+            int count = 1;
+            for (int j = i + 1; j < s; j++)
+            {
+                if (A[i] == A[j])
+                {
+                    count++;
+                    occ[j] = 0;
+                }
+            }
+            if (occ[i] != 0)
+            {
+                occ[i] = count;
+                final[i] = A[i];
+            }
+        }
+        for(int i=0;i<s;i++)
+        {
+            if(occ[i]==1)
+            {
+                Console.Write("Unique integer is {0}\t",final[i]);
+            }
+            
+        }
+   
+    Console.Read();
+}
+}
+
+
+3.Find the first repeating element in an array
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Find the first repeating element in an array");
+      Console.WriteLine("Enter the size of an array:\t");
+      int s=int.Parse(Console.ReadLine());
+      int[] A=new int[s];
+      Console.WriteLine("Enter the elements:\t");
+      for(int i=0;i<s;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+      }
+      int count=0;
+      for(int i=0;i<s;i++)
+      {
+        
+        for(int j=i+1;j<s;j++)
+        {
+          if(A[i]==A[j])
+          {
+            count++;
+            if(count==1)
+            {
+              Console.WriteLine("The first repeating element in the given array is: {0} \t",A[i]);
+            }
+            break;
+          }
+        }
+        
+      }
+    }
+}
+
+4.Possible subsets of a collection of integers
+
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Possible subsets of a collection of integers");
+      Console.WriteLine("Enter the array size:\t");
+      int s=int.Parse(Console.ReadLine());
+      int[] A=new int[s];
+      string s1=" ";
+      int count=0;
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<s;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+        s1+=A[i];
+      }
+      Console.WriteLine("String is {0}\t",s1);
+     for(int i=0;i<s;i++)
+     {
+       for(int j=0;j<s;j++)
+       {
+         if(i==j)
+         {
+           Console.Write("({0}),",A[i]);
+         }
+         else
+         {
+           Console.Write("({0},{1})",A[i],A[j]);
+         }
+       }
+       Console.WriteLine("\n");
+     }
+     }
+}
+
+
+5.Reverse the odd indexed words in the given string
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Reverse the odd indexed words in the given string");
+      Console.WriteLine("Enter the string:\t");  
+      string str =Console.ReadLine();
+        string s = "";
+        List<string> s1 = new List<string>();
+       
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i] != ' ')
+            {
+                s += str[i];
+            }
+            else
+            {
+                s1.Add(s);
+                s = "";
+            }
+            if(i==str.Length-1)
+            {
+                s1.Add(s);
+                s = "";
+            }
+        }
+        for (int i = 0; i < s1.Count;i++ )
+        {
+            if((i+1)%2!=0)
+            {
+                for(int j=(s1[i].Length)-1;j>=0;j--)
+                {
+                    Console.Write("{0}",s1[i][j]);
+                }
+            }
+            else
+            {
+                Console.Write("\t{0}\t",s1[i]);
+            }
+        }
+           
+    }
+}
+
+
+6.Count the pairs whose difference is n
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Count the pairs whose difference is n");
+      Console.WriteLine("Enter the array size:\t");
+      int s=int.Parse(Console.ReadLine());
+      int[] A=new int[s];
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<s;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+      }
+      int count=0;
+      Console.WriteLine("Enter the difference value:\t");
+      int n=int.Parse(Console.ReadLine());
+      for(int i=0;i<s;i++)
+      {
+        for(int j=i+1;j<s;j++)
+        {
+          if(A[i]-A[j]==n)
+          {
+            count++;
+          
+          }
+        }
+      }  
+      Console.Write("pairs={0}",count);
+    }
+}
+
+

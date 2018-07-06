@@ -1,0 +1,240 @@
+
+
+1.JUMPING NUMBERS
+
+using System;
+ using System.Collections.Generic;
+
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("JUMPING NUMBERS");
+      Console.WriteLine("Enter a number:\t");
+      int n=int.Parse(Console.ReadLine());
+      
+      string s=n.ToString();
+     int[] a1=new int[s.Length];
+      int k=0;
+      int count=0;
+      while(n>0)
+      {
+        int a=n%10;
+        n=n/10;
+        a1[k]=a;
+        k++;
+      }
+     
+      for(int i=1;i<a1.Length;i++)
+      {
+        if((a1[i]==a1[i-1]-1)||(a1[i]==a1[i-1]+1))
+        {
+          count++;        
+        }
+      }
+       if(count==s.Length-1)
+          {
+            Console.WriteLine("The given number {0} is a jumping number",s);
+          }
+      else
+      {
+       Console.WriteLine("The given number {0} is not a jumping number",s);
+      }
+     }
+}
+
+
+2.LENGTH OFTHE LONGEST CONSECUTIVE SUBSEQUENCE
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("LENGTH OFTHE LONGEST CONSECUTIVE SUBSEQUENCE");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[] a=new int[size];
+      int count=0,count1,max1=count,x=0;
+      Console.WriteLine("Enter the elements\n");
+      for(int i=0;i<size;i++)
+      {
+        a[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(a[i]>a[j])
+          {
+            int temp=a[j];
+            a[j]=a[i];
+            a[i]=temp;
+          }
+        }
+      }
+     
+      for(int i=0;i<size-1;i++)
+      {
+        if(a[i+1]-a[i]==1)
+        {
+          count+=1;   
+        }
+        else
+        {
+          count1=1;
+         if(count1==1)
+         {
+           count=count+1;
+           max1=count;
+           if(max1>x)
+           {
+             x=count;
+           }
+           else
+           {
+             max1=x;
+           }
+         }
+          count=0;
+        }
+      
+      }
+     Console.WriteLine("Length of the longest subsequence is{0}",max1);
+     }
+}
+
+
+3.MAXIMUM AND MINIMUM DISTANCE BETWEEN THE DUPLICATED
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("MAXIMUM AND MINIMUM DISTANCE BETWEEN THE DUPLICATED");
+      Console.WriteLine("Enter the size :\t ");
+      int size=int.Parse(Console.ReadLine());
+      int[] a=new int[size];
+      int count=0,min=0,max=0;
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<size;i++)
+      {
+        a[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(a[i]==a[j])
+          {
+            count++;
+            if(count==1)
+            {
+              min=j-1;
+            }
+            if(count==2)
+            {
+              max=j-1;
+            }
+             
+          }   
+        }
+     
+      }
+       Console.WriteLine("min={0}",min);
+             Console.WriteLine("max={0}",max);  
+     }
+}
+
+
+4.JUSTIFICATION
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("JUSTIFICATION");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      string[] words=new string[size];
+      int a=l;
+      Console.WriteLine("Enter the words\n");
+      for(int i=0;i<size;i++)
+      {
+        words[i]=Console.ReadLine();
+      }
+      Console.WriteLine("Enter the number of characters to be in a line:\t");
+      int l=int.Parse(Console.ReadLine());
+      int space=size-1;
+      while(a>0)
+      {
+        a=l/space;
+        l=l%space;
+      }
+      for(int i=0;i<l;)
+      {
+        for(int j=0;j<size;j++)
+        {
+          count++;
+          Console.Write("{0}\t",words[j]);
+          if(count==3)
+          {
+            Console.WriteLine("\n");
+            i=i+1;
+            count=0;
+          }
+        }
+      }
+     }
+}
+
+5.IP ADDRESS COMBINATION
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("IP ADDRESS COMBINATIONS");
+      Console.WriteLine("Enter the number:\t");
+      double number=double.Parse(Console.ReadLine());
+      int count=0;
+      string result="";
+      string final="";
+      string s=number.ToString();
+      if(s.Length>11)
+      {
+        Console.WriteLine("Enter the valid number");
+      }
+      else
+      {
+        for(int i=0;i<s.Length;i++)
+        {
+          result+=s[i];
+          count++;
+          int n=int.Parse(result);
+          final+=result;
+          result=""; 
+          if(count==3 && n<=255 )||(count==2 && n>99)
+          { 
+            final+=".";
+            //count1++;
+            count=0;
+          }
+        }
+      }
+      Console.WriteLine("final {0}\n",final);
+    }
+}
+

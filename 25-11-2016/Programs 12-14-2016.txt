@@ -1,0 +1,138 @@
+
+
+1.Number of currency notes in the given amount
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Number of currency notes in the given amount");
+        Console.WriteLine("Enter the amount:\t");
+        int a = int.Parse(Console.ReadLine());
+        int count = 0;
+        while(a>0)
+       {
+           if (a >= 500)
+           {
+               a -= 500;
+               count++;
+           }
+           if (a >= 100 && a < 500)
+           {
+               a -= 100;
+               count++;
+           }
+           if (a >= 50 && a < 100)
+           {
+               a -= 50;
+               count++;
+           }
+           if (a >= 10 && a < 50)
+           {
+               a -= 10;
+               count++;
+           }
+           if (a > 0 && a < 10)
+           {
+               a -= 1;
+               count++;
+           }
+       }
+              
+       Console.WriteLine("Number of currency notes ={0}", count);
+
+        Console.ReadLine();
+    }
+}
+
+
+2.Integer divsion without division, multiplication, mod operator
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Integer division without division,Mulitplication,mod operator");
+        Console.WriteLine("Enter the dividend:\t");
+        int a = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the divider:\t");
+        int b = int.Parse(Console.ReadLine());
+        int count = 1;
+        
+            int c = a - b;
+            while(c>=b)
+            {
+                c = c - b;
+                count++;
+            }
+            if(c <0)
+            {
+                c = a;
+                count = 0;
+            }
+         
+       
+       Console.WriteLine("Quotient={0}", count);
+       Console.WriteLine("Remainder={0}", c);
+
+        Console.ReadLine();
+    }
+}
+
+
+3.Lessen the space between the words in a sentence.
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Lessen the space between the words in a sentence");
+        Console.WriteLine("Enter the string:\t");
+        string a = Console.ReadLine();
+        int count = 0, count1 = 0;
+        string s = "", s1 = "";
+        for (int i = 0; i < a.Length;i++ )
+        {
+           if(a[i]!=' ')
+           {
+               s += a[i];
+           }
+           else
+           {
+               count++;
+               if(count>0 && a[i-1]!=' ')
+               {
+                   s1 +=( s+" ");
+                   count1++;
+               }
+               s = "";
+           }
+           if(i==a.Length-1)
+           {
+                count++;
+                if (count >0 && a[i - 1] != ' ')
+                {
+                    s1 +=s;
+                }
+                s = "";
+            }
+          
+        }
+        Console.Write("{0}", s1);
+        Console.WriteLine("\nNumber of space in the given sentence ={0}",count);
+        Console.WriteLine("\nAfter removed extra space in the given sentence ={0}", count1);
+ 
+    }
+}
+
+
+4.

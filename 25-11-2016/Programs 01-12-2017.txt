@@ -1,0 +1,353 @@
+
+1.Read the five dates and print all the dates, that are between them 16/08/2015 and 10/11/2016
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication191
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Read the five dates and print all the dates, that are between them 16/08/2015 and 10/11/2016.");
+            Console.WriteLine("Enter the size of an array:\t");
+            int size = int.Parse(Console.ReadLine());
+            string[] arr = new string[size];
+            Console.WriteLine("Enter the dates(DD/MM/YYYY) format:\n");
+            for(int i=0;i<size;i++)
+            {
+                arr[i] = Console.ReadLine();
+            }
+            int count =0;
+            string s="",s1="";
+            int n;
+            int[] date = new int[size];
+            int[] month = new int[size];
+            int[] year = new int[size];
+            int d = 0,m = 0,y = 0;
+            for(int i=0;i<size;i++)
+            {
+                count = 0;
+                for(int j=0;j<arr[i].Length;j++)
+                {
+                    if(arr[i][j]!='/')
+                    {
+                        s += arr[i][j];
+                    }
+                    else
+                    {
+                        s1 = s;
+                        n = int.Parse(s1);
+                        count++;
+                        if (count == 1)
+                        {
+                            if(d<size)
+                            {
+                                date[d] = n;
+                                d++;
+                            }
+                             
+                        }
+                        else if(m<size)
+                        {
+                             month[m] = n;
+                             m++;
+                        }          
+                        s1 = ""; s = "";
+                    }
+                    if(j==arr[i].Length-1)
+                    {
+                        if(y<size)
+                        {
+                            n = int.Parse(s);
+                            year[y] = n;
+                            y++;
+                        }
+                        s1 = "";
+                        s = "";
+                    }   
+                }
+            }
+            Console.WriteLine("DATE");
+            foreach(int d1 in date)
+            {
+                Console.WriteLine("{0}", d1);
+            }
+            Console.WriteLine("MONTH");
+            foreach (int m1 in month)
+            {
+                Console.WriteLine("{0}", m1);
+            }
+            Console.WriteLine("YEAR");
+            foreach (int y1 in year)
+            {
+                Console.WriteLine("{0}", y1);
+            }
+            Console.WriteLine("Enter the start date:\t");
+            int sd = int.Parse(Console.ReadLine());
+            int sm = int.Parse(Console.ReadLine());
+            int sy = int.Parse(Console.ReadLine());
+           
+            Console.WriteLine("Enter the end date:\t");
+            int ed = int.Parse(Console.ReadLine());
+            int em = int.Parse(Console.ReadLine());
+            int ey = int.Parse(Console.ReadLine());
+           
+
+            //check the year
+            for(int i=0;i<size;i++)
+            {
+                if(year[i]>=sy && year[i]<=ey)
+                {
+                    if(year[i]==sy)
+                    {
+                        if(month[i]>sm && month[i]<=12)
+                        {
+                            if (date[i] <= 31)
+                            {
+                                Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                            }     
+                        }
+                        else if(month[i]==sm)
+                        {
+                            if(date[i]>=sd)
+                            {
+                                Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                            }
+                        }
+                   }
+                    else if(year[i]==ey)
+                    {
+                        if (month[i] > em && month[i] <= 12 || month[i] == em)
+                        {
+                            if (date[i] > ed && date[i] <= 31)
+                            {
+                                Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                        }
+                    }
+                    else
+                    {
+                        if (month[i] > em && month[i]<sm && month[i] <=12 || month[i] == em || month[i]==sm)
+                        {
+                            if (date[i] > ed  || date[i]>sd && date[i] <= 31)
+                            {
+                                Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                            }
+                        }
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+2.Add Binary strings
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication192
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Add Binary strings.");
+            Console.WriteLine("Enter the first string:\t");
+            string a = Console.ReadLine();
+            Console.WriteLine("Enter the second string:\t");
+            string b = Console.ReadLine();
+            string c = "",r="0";
+            int i, j = 1;
+            if(a.Length>b.Length)
+            {
+                i = a.Length - b.Length;
+                while(j<=i)
+                {
+                    c += '0';
+                    j++;
+                }
+                b = c + b;   
+            }
+            else
+            {
+                i = b.Length - a.Length;
+                while (j <= i)
+                {
+                    c += '0';
+                    j++;
+                }
+                a = c + a;  
+            }
+            Console.WriteLine("a={0}", a);
+            Console.WriteLine("b={0}", b);
+            string final = "";
+            int m = a.Length - 1;
+            while(m>=0)
+            {
+                if(m!=0 || m==0)
+                {
+                    if (r == "0" && a[m] == '1')
+                    {
+                        if (b[m] == '1')
+                        {
+                            final = '0' + final;
+                            r = "1";
+                        }
+                        else
+                        {
+                            final = '1' + final;
+                            r = "0";
+                        }
+                    }
+                    else if (r == "0" && a[m] == '0')
+                    {
+                        if (b[m] == '1')
+                        {
+                            final = '1' + final;
+                            r = "0";
+                        }
+                        else
+                        {
+                            final = '0' + final;
+                            r = "0";
+                        }
+                    }
+
+                    else if (r == "1" && a[m] == '0')
+                    {
+                        if (b[m] == '1')
+                        {
+                            final = '0' + final;
+                            r = "1";
+                        }
+                        else
+                        {
+                            final = '1' + final;
+                            r = "0";
+                        }
+                    }
+
+                    else
+                    {
+                        if (b[m] == '1')
+                        {
+                            final = '1' + final;
+                            r = "1";
+                        }
+                        else
+                        {
+                            final = '0' + final;
+                            r = "1";
+                        }
+                    }
+                }
+            
+                m--;
+                }
+            Console.WriteLine("Addition of two strings={0}", final);
+            Console.ReadLine();
+        }
+    }
+}
+
+3.Count numbers with same first and last digit.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication193
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Count numbers with same first and last digit.");
+            Console.WriteLine("Enter the start number:\t");
+            int start = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the end number:\t");
+            int end = int.Parse(Console.ReadLine());
+            string s;
+            int count = 0;
+            for(int i=start;i<=end;i++)
+            {
+                s = i.ToString();
+                if(s[0]==s[s.Length-1])
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine("Count of numbers with same first and last digit:{0}", count);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+4.Mersenne Prime
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication194
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Mersenne Prime");
+            Console.WriteLine("Enter the range:\t");
+            int r = int.Parse(Console.ReadLine());
+            int c;
+            int p;
+            Console.WriteLine("output:");
+            for(int i=2;i<=r;i++)
+            {
+                c = 0;
+                p = 1;
+                for(int j=1;j<=i;j++)
+                {
+                    if(i%j==0)
+                    {
+                        c++;
+                    }
+                }
+                if(c==2)
+                {
+                    for(int k=1;k<=i;k++)
+                    {
+                        p *= 2;
+                        if (i == p - 1)
+                        {
+                            Console.WriteLine("{0}", i);
+                        }
+                    }
+                 
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+

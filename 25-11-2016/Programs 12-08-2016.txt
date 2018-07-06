@@ -1,0 +1,240 @@
+
+
+1.Reverse the words without changing the positon of words
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Reverse the words without changing the positon of words");
+      Console.Write("\n Enter the string:\t");
+        string s = Console.ReadLine();
+        Console.Write("\n s Length={0}",s.Length);
+        string s1 = "",s2="",s3="",s4="";
+       
+        for (int i = 0; i < s.Length;i++ )
+        {
+            if(s[i]!=' ')
+            {
+                s1 += s[i];
+            }
+            else
+            {
+                s2 = (" "+s1);
+                s1 = "";
+            }
+            if(i==s.Length-1)
+            {
+                s2 = s1;
+                s1 = "";
+            }
+            for(int j=s2.Length-1;j>=0;j--)
+            {
+                s3 += s2[j];
+            }
+            s4+= s3;
+            s3 = "";
+            s2 = "";
+        }
+        Console.Write("Final ={0}\n",s4);
+        for (int i = 0; i < s.Length;i++ )
+        {
+            int first = (int)s[i];
+            int second = (int)s4[i];
+            if(s4[i]==' ')
+            {
+                Console.Write("\t");
+            }
+            if(first>64 && first<91)
+            {
+                if(second>64 && second<91)
+                {
+                    Console.Write("{0}",s4[i]);
+                }
+                else
+                {
+                    char lower=(char)(second - 32);
+                    Console.Write("{0}",lower);
+                }
+            }
+            if (first > 96 && first < 123)
+            {
+                if (second > 96 && second < 123)
+                 {
+                     Console.Write("{0}", s4[i]);
+                 }
+                 else
+                 {
+                     char lower = (char)(second + 32);
+                     Console.Write("{0}", lower);
+                 }
+            }
+        }
+           
+    }
+}
+
+
+
+2.Print the characters in the string only once in reverse order
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Print the characters in the string only once in reverse order");
+        Console.WriteLine("\n Enter the string:\t");
+        string input =Console.ReadLine();
+        string s = " ";
+        for (int i = input.Length - 1; i >= 0; i--)
+        {
+            s += input[i];
+        }
+        char[] a = s.ToCharArray();
+        for (int i = 0; i < s.Length; i++)
+        {
+            for (int j = i + 1; j < s.Length; j++)
+            {
+                if (s[i] == s[j])
+                {
+                    a[j] = ' ';
+                }
+            }
+        }
+        foreach (char c in a)
+        {
+            if (c != ' ')
+            {
+                Console.Write("{0}", c);
+            }
+        }
+       
+    }
+}
+
+
+3.Minimum distance between the elements
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("Minimum distance between the elements");
+       Console.WriteLine("Enter the size of an array:\t");
+       int n =int.Parse(Console.ReadLine());
+       int[] a=new int[n]; 
+       Console.WriteLine("Enter the elements:\n");
+       for(int i=0;i<n;i++)
+       {
+         a[i]=int.Parse(Console.ReadLine());
+       }
+      Console.WriteLine("Enter the first element:\t");
+      int first=int.Parse(Console.ReadLine());
+      Console.WriteLine("Enter the second element:\t");
+      int second=int.Parse(Console.ReadLine());
+      int p=0,q=0,d=0;
+      for(int i=0;i<n;i++)
+      {
+        if(a[i]==first)
+        {
+          p=i;
+        }
+        if(a[i]==second)
+        {
+         q=i;
+        }
+         d=p-q;
+        
+      }
+     
+      Console.WriteLine("Minimum distance ({0},{1}) is {2}",first,second,d);
+                        
+    }
+}
+
+
+
+4.Replace every element with the next greatest element
+
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Replace every element with the next greatest element");
+        Console.WriteLine("Enter the size of an array:\t");
+        int n = int.Parse(Console.ReadLine());
+        int[] a = new int[n];
+        int max;
+        int[] b = new int[n];
+        int x = 0;
+        Console.WriteLine("Enter the elements:\n");
+        for (int i = 0; i < n; i++)
+        {
+            a[i] = int.Parse(Console.ReadLine());
+        }
+        for (int i = 0; i < n ; i++)
+        {
+            max = 0;
+            for (int j = i + 1; j < n ; j++)
+            {
+                if (max > a[j])
+                {
+                    max = max;
+                }
+                else
+                {
+                    max = a[j];
+                }
+                b[x] = max;
+            }
+
+            Console.Write("b[{0}]={1}\n", i, b[x]);
+            x++;
+        }
+       
+    }
+}
+
+
+5.Possible subsets of given length in string
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Possible subsets of given length in string ");    
+      Console.WriteLine("Enter the string:\t");
+      string s=Console.ReadLine();
+      Console.WriteLine("Enter subset length:\t");
+      int l=int.Parse(Console.ReadLine());
+      int i=0;
+      int count=0;
+      for(int j=1;j<s.Length;j++)
+      {
+        Console.Write("{0}",s[i]);
+        if(count<l)
+        {
+          Console.WriteLine("{1}",s[j]); 
+          count++;
+        }
+       count=0;
+      }
+    }
+}
+

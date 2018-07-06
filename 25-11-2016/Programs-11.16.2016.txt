@@ -1,0 +1,319 @@
+1.CHECK THE VALUES OF AN ARRAY ARE SORTED OR NOT
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("CHECK THE VALUES OF AN ARRAY ARE SORTED OR NOT");
+      Console.WriteLine("\n Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      Console.WriteLine("Enter the elements:\t");
+      int[] input=new int[size];
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      int first=0;
+      int second=1;
+      if(input[first]>input[second])
+      {
+        for(int i=second;i<size-1;i++)
+        {
+          for(int j=i+1;j<size-1;j++)
+          {
+            if(input[i]>=input[i+1])
+          {
+           Console.WriteLine("The given array is in sorted order.");
+          }
+          else
+          {
+            Console.WriteLine("The given array is not in sorted order.");
+          }
+          }
+          
+        }
+      }
+      else
+      {
+        for(int i=second;i<size-1;i++)
+        {
+          for(int j=i+1;j<size-1;j++)
+          {
+              if(input[i]<=input[i+1])
+          {
+            Console.WriteLine("The given array is not in sorted order.");
+          }
+          else
+          {
+            Console.WriteLine("The given array is not in sorted order.");
+          }
+          }
+        
+        }
+      }
+     }
+}
+
+2.CHECK AN INPUT STRING y IS SUBSTRING OF STRING x
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("CHECK AN INPUT STRING y IS SUBSTRING OF STRING x");
+      Console.WriteLine("Enter the string:\t");
+      string x=Console.ReadLine();
+      Console.WriteLine("Enter the substring to be checked:\t");
+      string y=Console.ReadLine();
+      int j=0;
+      string result="";
+      for(int i=0;i<x.Length-1;i++)
+      {
+        if(x[i]==y[j])
+           {
+             for(int k=i;k<y.Length+i;k++)
+             {
+               result+=x[k];
+             }
+              if(result==y)
+               {
+                 Console.WriteLine("The given string {0} is a substring of {1}",y,x);
+               }
+               else
+               {
+                   Console.WriteLine("The given string {0} is not a substring of {1}",y,x);
+               }
+             result="";
+           }
+      }
+     }
+}
+
+3.REMOVE ALL CHARACTERS FROM THE INPUT STRING THAT ARE PRESENT IN MASK STRING
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("REMOVE ALL CHARACTERS FROM THE INPUT STRING THAT ARE PRESENT IN MASK STRING");
+      Console.WriteLine("Enter the input string:\t");
+      string input=Console.ReadLine();
+      char[] input1=input.ToCharArray();
+      Console.WriteLine("Enter the mask string:\t");
+      string mask=Console.ReadLine();
+      char[] mask1=mask.ToCharArray();
+      string result="";
+     for(int i=0;i<mask1.Length;i++)
+     {
+       for(int j=0;j<input1.Length;j++)
+       {
+         if(mask1[i]==input1[j])
+         {
+           input1[j]=' ';
+         }
+       }
+     }
+      for(int i=0;i<input1.Length;i++)
+      {
+        if(input1[i]!=' ')
+        {
+          result+=input1[i];
+        }
+      }
+      Console.WriteLine("output {0}",result);
+      
+     }
+}
+
+4.FUNCTION TO FIND THE NUMBER OF TRAILING ZEROS OF A NUMBERS FACTORIAL
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("FUNCTION TO FIND THE NUMBER OF TRAILING ZEROS OF A NUMBERS FACTORIAL");
+      Console.WriteLine("Enter the number:\t");
+      string output="";
+      int count=0,count1=1;
+      long number=long.Parse(Console.ReadLine());
+      long fact=1;
+      for(int i=1;i<=number;i++)
+      {
+        fact*=i;
+      }
+      Console.WriteLine("Factorial={0}",fact);
+     
+      string result=fact.ToString();
+     for(int i=result.Length-1;i>=0;i--)
+     {
+       output=result[i]+output;
+       count++;
+       if(count==3)
+       {
+         output=","+output;
+         count=0;
+       }
+     }
+      Console.WriteLine("output ={0}",output);
+      factorialZeroCount(output);
+    }
+  
+  private static void factorialZeroCount(string a)
+  {
+    int count1=1;
+      for(int i=0;i<a.Length-1;i++)
+      {
+        if(a[i]=='0')
+        {
+          for(int k=i;k<a.Length-1;k++)
+          {
+            if(a[k]=='0')
+            {
+              count1++;
+            }
+            else
+            {
+              count1=1;
+            }
+          }
+        }
+      }
+      Console.WriteLine("Number of trialing zeros is {0}",count1);
+     }
+}
+
+5.TWO NUMBERS OF AN ARRAY THAT GIVES THE GIVEN SUM
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("TWO NUMBERS OF AN ARRAY THAT GIVES THE GIVEN SUM");
+      Console.WriteLine("Enter the size of an array:");
+      int size=int.Parse(Console.ReadLine());
+      Console.WriteLine("Enter the elements:");
+      int[] input=new int[size];
+      int a;
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("Enter the sum:\t");
+      int sum= int.Parse(Console.ReadLine());
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          a=input[i]+input[j];
+          if(a==sum)
+          {
+            Console.WriteLine("{0},{1}",input[i],input[j]);
+          }
+        }
+      }
+     }
+}
+
+6.ADD THE FIRST AND LAST DIGIT OF A NUMBER
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("ADD THE FIRST AND LAST DIGIT OF A NUMBER");
+      Console.WriteLine("Enter the number:\t");
+      int number=int.Parse(Console.ReadLine());
+      string result=number.ToString();
+      string s="";    
+      int sum=0;
+      for(int i=0;i<result.Length;i++)
+      {
+      	if(i==0 || i==result.Length-1)
+        {
+          s+=result[i];
+          int digit=Convert.ToInt32(s);
+          sum+=digit;
+        }
+      
+        s="";
+      }
+      Console.WriteLine("Sum of first and last digit of a number is {0}",sum);
+     }
+}
+
+7.SUM OF ODD NUMBER WITHIN THE INPUT RANGE
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("SUM OF ODD NUMBER WITHIN THE INPUT RANGE");
+      Console.WriteLine("Enter the range:\t");
+      int range=int.Parse(Console.ReadLine());
+      int sum=0;
+      for(int i=1;i<=range;i++)
+      {
+        if(i%2!=0)
+        {
+          sum+=i;
+          
+        }
+      }
+      Console.WriteLine("The sum of odd numbers within the given range {0} is {1} ",range,sum);
+     }
+}
+
+8.MEDIAN OF THE ARRAY
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("MEDIAN OF THE ARRAY");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[] input=new int[size];
+      double median;
+      Console.WriteLine("Enter the elements:\t");
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      if(size%2==0)
+      {
+        int m=size/2;
+         median=(double)(input[m-1]+input[m])/2;
+      }
+      else
+      {
+        int m=size/2;
+       median =(double)input[m];
+      }
+      Console.WriteLine("Median is {0}",median);
+     }
+}
+

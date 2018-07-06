@@ -1,0 +1,230 @@
+
+
+1.Minimum absolute sum pair
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Minimum absolute sum pair");
+        //Console.WriteLine("Enter the size of an array:\t");
+        //int n = int.Parse(Console.ReadLine());
+        int n = 5;
+        int[] a = new int[]{15,5,-20,30,-45};
+        int c;
+        //Console.WriteLine("Enter the elements");
+        //for(int i=0;i<n;i++)
+        //{
+        //    a[i] = int.Parse(Console.ReadLine());
+        //}
+        int x=0,min=0;
+        for(int i=0;i<n-1;i++)
+        {
+           for(int j=i+1;j<n;j++)
+           {
+               c = a[i] + a[j];
+               if(c<0)
+               {
+                   if(c<x)
+                   {
+                       x=c;
+                      
+                   }
+                   else
+                   {
+                       min = x;
+                   }
+               }
+           }
+        }
+        Console.WriteLine("min={0}",min);
+        Console.ReadLine();
+    }
+}
+
+
+
+2.sum of two elements is present in the array
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("sum of two elements is present in the array");
+            Console.Write("\n Enter the size of an array:\t");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            int c;
+            Console.WriteLine("Enter the elements:\n");
+            for(int i=0;i<n;i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            for(int i=0;i<n-1;i++)
+            {
+                for(int j=i+1;j<n;j++)
+                {
+                    c = a[i] + a[j];
+                    for(int k=0;k<n;k++)
+                    {
+                        if(c==a[k])
+                        {
+                            Console.WriteLine("{0}+{1}={2}",a[i],a[j],a[k]);
+                        }
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+3.Find kth tallest student in the class.
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Find the 4th and kth tallest student in the class");
+            Console.WriteLine("Enter the size of an array:\t");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            int[] occ = new int[n];
+            int count,count1=0;
+            Console.WriteLine("Enter the elements:\n");
+            for (int i = 0; i < n; i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            
+            for (int i = 0; i < n; i++)
+            {
+                occ[i] = -1;
+            }
+           
+            for (int i = 0; i < n;i++ )
+            {
+                for(int j=i+1;j<n;j++)
+                {
+                    if(a[i]<a[j])
+                    {
+                        int temp=a[j];
+                        a[j]=a[i];
+                        a[i]=temp;
+                    }
+                }
+            }
+            Console.WriteLine("Descending order");
+            foreach(int x in a)
+            {
+                Console.WriteLine("{0}",x);
+            }
+            Console.WriteLine("\n Input the K value:\t");
+            int k = int.Parse(Console.ReadLine());
+                for (int i = 0; i < n; i++)
+                {
+                    count = 1;
+                    for (int j = i + 1; j < n; j++)
+                    {
+                        if (a[i] == a[j])
+                        {
+                            count++;
+                            occ[j] = 0;
+                        }
+                    }
+                    if (occ[i] != 0)
+                    {
+                        occ[i] = count;
+                    }
+                }
+                
+            for (int i = 0; i < n; i++)
+            {
+                if (occ[i] != 0)
+                {
+                    count1++;
+                    if (count1 == k)
+                    {
+                        Console.WriteLine("{0}-{1}", a[i], occ[i]);
+                    }  
+                }
+            } 
+
+         Console.ReadLine();
+        }
+    }
+}
+
+
+4.Sum of m elements in the array A matching target integer t
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication13
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Sum of m elements in the array A matching target integer t");
+            Console.WriteLine("Enter the size of an array:\t");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            int count = 0;
+            Console.WriteLine("Enter the elements:\n");
+            for(int i=0;i<n;i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("Enter the value of m:\t");
+            int m = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the target integer:\t");
+            int t = int.Parse(Console.ReadLine());
+            int sum;
+            for (int i = 0; i < n - m;i++ )
+            {
+                sum = 0;
+                count++;
+                while(count<m)
+                {
+                    sum +=a[i];
+                    i++;
+                    if(sum==t)
+                    {
+                        Console.WriteLine("yes");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No");
+                    }
+                }
+            }             Console.ReadLine();
+        }
+    }
+}

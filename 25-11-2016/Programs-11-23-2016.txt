@@ -1,0 +1,298 @@
+
+
+1.ADJACENT CHARACTERS IN THE ORIGINAL STRING ARE SEPARATED BY '*'
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("ADJACENT CHARACTERS IN THE ORIGINAL STRING ARE SEPARATED BY '*'");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      int length=input.Length;
+      for(int i=0;i<length-1;i++)
+      {
+        if(i!=length-2)
+        {
+          if(input[i]==input[i+1])
+          {
+             Console.Write("{0}*",input[i]);
+            }
+          
+          else
+          {
+            Console.Write("{0}",input[i]);
+          }
+        }
+        else
+        {
+          if(input[i]==input[i+1])
+          {
+            Console.Write("{0}*{1}",input[i],input[i+1]);
+          }
+          else
+          {
+            Console.Write("{0}{1}",input[i],input[i+1]);
+          }
+        }
+      }
+     }
+}
+
+
+
+2.MERGE ALL OVERLAPPING INTERVALS
+
+
+using System;
+ using System.Collections.Generic;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("MERGE ALL OVERLAPPING INTERVALS");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[,] input=new int[size,size];
+      ArrayList interval=new ArrayList();
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<size;i++)
+      {
+        input[i,0]=int.Parse(Console.ReadLine());
+        input[i,1]=int.Parse(Console.ReadLine());
+      }
+      //sort
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(input[i,0]>input[j,0])
+          {
+            int temp=input[j,0];
+            input[j,0]=input[i,0];
+            input[i,0]=temp;
+            
+            int temp1=input[j,1];
+            input[j,1]=input[i,1];
+            input[i,1]=temp1;
+          }
+        }
+      }
+   
+      //merging
+       interval.Add(input[0,0]);
+      for(int i=0;i<size;i++)
+      {
+        if(i!=size-1)
+        {
+       if(input[i,1]<input[i+1,0])
+       {
+         interval.Add(input[i,1]);
+         interval.Add(input[i+1,0]);
+       }
+         
+        }
+         else
+          {
+            interval.Add(input[i,1]);
+          }
+      }
+  for(int k=0;k<interval.Count;k=k+2)
+  {
+    Console.WriteLine("[{0},{1}]",interval[k],interval[k+1]);
+  }
+      
+     }
+}
+
+
+3.ROTATE AN 'N' ELEMENTS OFAN ARRAY TO THE RIGHT BY 'K' STEPS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+     Console.WriteLine("ROTATE AN 'N' ELEMENTS OFAN ARRAY TO THE RIGHT BY 'K' STEPS");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[] input=new int[size];
+      int[] result=new int[size];
+      
+      Console.WriteLine("Enter the elements:\n");
+      for(int  i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("Enter the number of steps to be moved:\t");
+      int steps=int.Parse(Console.ReadLine());
+      int[] temp=new int[steps];
+      int k=0;
+      for(int i=0;i<steps;i++)
+      {
+        temp[i]=input[i];
+      }
+      int j=steps;
+      for(int i=0;i<size;i++)
+      {   
+        if(i<size-steps)
+        {        
+          result[i]=input[j];
+          j++;
+        }
+        
+        else
+        {
+           result[i]=temp[k];
+           k++;
+          
+        }
+        }
+     
+      
+      for(int i=0;i<size;i++)
+      {
+        Console.Write("{0}\t",result[i]);
+      }
+     }
+}
+
+
+4.ABLE TO REACH THE LAST INDEX
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("ABLE TO REACH THE LAST INDEX");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[] A=new int[size];
+      Console.WriteLine("Enter the elements:\t");
+      for(int i=0;i<size;i++)
+      {
+        A[i]=int.Parse(Console.ReadLine());
+      }
+    
+      int count=0;
+      int jump=A[0];
+      for(int i=1;i<size;i++)
+      {
+        if(jump<A[i])
+        {
+          jump=A[i];
+          count++;
+        }
+      }
+      if(count==A[0])
+      {
+        Console.WriteLine("Able to reach the last index");
+      }
+      else
+      {
+          Console.WriteLine("Not able to reach the last index");
+      }
+     }
+}
+
+5.LENGTH OF THE LONGEST VALID PARENTHESES
+
+using System;
+ using System.Collections.Generic;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("LENGTH OF THE LONGEST VALID PARENTHESES");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      ArrayList open=new ArrayList();
+      ArrayList end=new ArrayList();
+      int valid;
+      for(int i=0;i<input.Length;i++)
+      {
+        if(input[i]=='(')
+        {
+          open.Add(input[i]);
+        }
+        else
+        {
+          end.Add(input[i]);
+        }
+      }
+     if(open.Count==end.Count)
+     {
+       valid=open.Count+end.Count;
+     }
+      else
+      {
+        if(open.Count>end.Count)
+        {
+          valid=end.Count*2;
+        }
+        else
+        {
+          valid=open.Count*2;
+        }
+      }
+      Console.WriteLine("Length of the longest valid parenthesis in the given string is {0}",valid);
+     }
+}
+
+
+6.DECIMAL TO BINARY ,OCTAL, HEXADECIMAL
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("DECIMAL TO BINARY ,OCTAL, HEXADECIMAL");
+      Console.WriteLine("Enter the decimal number:\t");
+      int d=int.Parse(Console.ReadLine());
+      int d1=d,d2=d;
+      int n,n1,n2;
+      string s="",s1="",s2="";
+      
+      while(d>0)
+      {
+        n=d%2;
+        d=d/2;
+        s=n+s;
+      }
+      Console.WriteLine("BINARY ={0}",s);
+      
+       while(d1>0)
+      {
+        n=d1%8;
+        d1=d1/8;
+        s1=n+s1;
+      }
+      Console.WriteLine("octal={0}",s1);
+      
+       while(d2>0)
+      {
+        n=d2%16;
+        d2=d2/16;
+        s2=n+s2;
+      }
+      Console.WriteLine("hexadecimal ={0}",s2);
+     }
+}
+
+
+

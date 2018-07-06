@@ -1,0 +1,208 @@
+
+1.Find sum of modulo K of first N natural number.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication194
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Find sum of modulo K of first N natural number");
+            Console.WriteLine("Enter the range of natural numbers:\t");
+            int r = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the k value:\t");
+            int k = int.Parse(Console.ReadLine());
+            int sum = 0;
+            for(int i=1;i<r;i++)
+            {
+                sum += (i % k);
+            }
+            Console.WriteLine("sum:{0}", sum);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+2.Super prime
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication194
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Super prime");
+            Console.WriteLine("Enter the range:\t");
+            int r = int.Parse(Console.ReadLine());
+            int c,c1=0,c2;
+            for(int i=2;i<=r;i++)
+            {
+                c = 0;
+                c2 = 0;
+                for(int j=1;j<=i;j++)
+                {
+                    if(i%j==0)
+                    {
+                        c++;
+                    }
+                }
+                if(c==2)
+                {
+                    c1++;
+                    for(int k=1;k<=c1;k++)
+                    {
+                        if(c1%k==0)
+                        {
+                            c2++;
+                        }
+                    }
+                    if(c2==2)
+                    {
+                        Console.WriteLine("{0}", i);
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3.Program for Chocolate and Wrapper Puzzle
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication194
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Program for Chocolate and Wrapper Puzzle");
+            Console.WriteLine("Enter the money you have:\t");
+            int m = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the price:\t");
+            int p = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the wrap:\t");
+            int w = int.Parse(Console.ReadLine());
+            int choc = m/p;
+            int c = choc,c1=0;
+            while(c>0)
+            {
+                c1 += c;
+                c = c / w;
+            }
+            Console.WriteLine("Number of chocolate in total is {0}", c1);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+4.Count natural numbers whose factorials are divisible by x but not y
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication195
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Count natural numbers whose factorials are divisible by x but not y.");
+            Console.WriteLine("Enter the X value:\t");
+            int x = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the Y value:\t");
+            int y = int.Parse(Console.ReadLine());
+            int fact = 1,count=0;
+            for(int i=1;i<=y;i++)
+            {
+                fact = 1;
+                for(int j=i;j>0;j--)
+                {
+                    fact *= j;
+                }
+                if(fact%x==0 && fact%y!=0)
+                {
+                    count++;
+                    Console.WriteLine("{0}", i);
+                }
+            }
+            Console.WriteLine("count={0}", count);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+5.Right-Truncatable Prime
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication195
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Right truncatable prime.");
+            Console.WriteLine("Enter the number:\t");
+            int n = int.Parse(Console.ReadLine());
+            int count=0,count1=0;
+            string s = n.ToString();
+            while(n>0)
+            {
+                n = n / 10;
+                count = 0;
+                for (int i=1;i<=n;i++ )
+                {
+                   if(n%i==0)
+                    {
+                        count++;
+                    }
+                }
+                if(count==2)
+                {
+                    count1++;
+                } 
+            }
+            if (count1 == s.Length - 1)
+            {
+                Console.WriteLine("Yes, Right-truncatable prime");
+            }
+            else
+            {
+                Console.WriteLine("No,Not Right-truncatable prime");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+6.Find the highest occurring digit in prime numbers in a range

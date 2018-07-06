@@ -1,0 +1,291 @@
+
+1.Given an array, print all subarrays in the array which has sum 0.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication190
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given an array, print all subarrays in the array which has sum 0.");
+            Console.WriteLine("Enter the size of an array:\t");
+            int size = int.Parse(Console.ReadLine());
+            int[] arr = new int[size];
+            Console.WriteLine("Enter the elements:\t");
+            for (int i = 0; i < size; i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            int sum ;
+            for(int i=0;i<size;i++)
+            {
+                sum = arr[i];
+                for(int j=i+1;j<size;j++)
+                {                   
+                   sum += arr[j];
+                   if (sum == 0)
+                   {
+                       Console.WriteLine("Subarray found from index {0} to {1}", i, j);
+                   } 
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+2.Harshad Number
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication191
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Harshad Number");
+            Console.WriteLine("Enter the number:\t");
+            int n = int.Parse(Console.ReadLine());
+            int num = n;
+            int a,sum=0;
+            while(num>0)
+            {
+                a = num % 10;
+                num = num / 10;
+                sum += a; 
+            }
+            if(n%sum==0)
+            {
+                Console.WriteLine("The given number {0} is Harshad number.", n);
+            }
+            else
+            {
+                Console.WriteLine("The given number {0} is not a Harshad number.", n);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+3.Find unique integers in the array.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication191
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Find unique integers in the array.");
+            Console.WriteLine("Enter the size of an array:\t");
+            int size = int.Parse(Console.ReadLine());
+            int[] arr = new int[size];
+            int[] occ = new int[size];
+            int count;
+            Console.WriteLine("Enter the elements:\n");
+            for(int i=0;i<size;i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+                occ[i] = -1;
+            }
+            for(int i=0;i<size;i++)
+            {
+                count = 1;
+                for(int j=i+1;j<size;j++)
+                {
+                    if(arr[i]==arr[j])
+                    {
+                        count++;
+                        occ[j] = 0;
+                    }
+                }
+                if(occ[i]!=0)
+                {
+                    occ[i] = count;
+                }
+            }
+            Console.WriteLine("Unique elements\n");
+            for(int x=0;x < size;x++)
+            {
+                if(occ[x]==1)
+                {
+                    Console.WriteLine("{0}", arr[x]);
+                }
+            }
+        
+            Console.ReadLine();
+        }
+    }
+}
+
+
+4.Read the five dates and print all the dates, that are between them 16/08/2015 and 10/11/2016.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication191
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Read the five dates and print all the dates, that are between them 16/08/2015 and 10/11/2016.");
+            //Console.WriteLine("Enter the size of an array:\t");
+            //int size = int.Parse(Console.ReadLine());
+            int size = 5;
+            string[] arr = new string[5] {"01/10/2016","12/03/2015", "15/05/2016", "24/12/2017", "05/12/2015" };
+            //Console.WriteLine("Enter the dates(DD/MM/YYYY) format:\n");
+            //for(int i=0;i<size;i++)
+            //{
+            //    arr[i] = Console.ReadLine();
+            //}
+            int count =0;
+            string s="",s1="";
+            int n;
+            int[] date = new int[size];
+            int[] month = new int[size];
+            int[] year = new int[size];
+            int d = 0,m = 0,y = 0;
+            for(int i=0;i<size;i++)
+            {
+                count = 0;
+                for(int j=0;j<arr[i].Length;j++)
+                {
+                    if(arr[i][j]!='/')
+                    {
+                        s += arr[i][j];
+                    }
+                    else
+                    {
+                        s1 = s;
+                        n = int.Parse(s1);
+                        count++;
+                        if (count == 1)
+                        {
+                            if(d<size)
+                            {
+                                date[d] = n;
+                                d++;
+                            }
+                             
+                        }
+                        else if(m<size)
+                        {
+                             month[m] = n;
+                             m++;
+                        }          
+                        s1 = ""; s = "";
+                    }
+                    if(j==arr[i].Length-1)
+                    {
+                        if(y<size)
+                        {
+                            n = int.Parse(s);
+                            year[y] = n;
+                            y++;
+                        }
+                        s1 = "";
+                        s = "";
+                    }
+                    
+                }
+            }
+            Console.WriteLine("DATE");
+            foreach(int d1 in date)
+            {
+                Console.WriteLine("{0}", d1);
+            }
+            Console.WriteLine("MONTH");
+            foreach (int m1 in month)
+            {
+                Console.WriteLine("{0}", m1);
+            }
+            Console.WriteLine("YEAR");
+            foreach (int y1 in year)
+            {
+                Console.WriteLine("{0}", y1);
+            }
+            Console.WriteLine("Enter the start date:\t");
+            //int sd = int.Parse(Console.ReadLine());
+            //int sm = int.Parse(Console.ReadLine());
+            //int sy = int.Parse(Console.ReadLine());
+            int sd = 16,sm=08,sy=2015;
+            Console.WriteLine("Enter the end date:\t");
+            //int ed = int.Parse(Console.ReadLine());
+            //int em = int.Parse(Console.ReadLine());
+            //int ey = int.Parse(Console.ReadLine());
+            int ed = 10, em = 11, ey = 2016;
+
+            //check the year
+            for(int i=0;i<size;i++)
+            {
+                if(year[i]>=sy && year[i]<=ey)
+                {
+                    if(year[i]==sy)
+                    {
+                        if(month[i]>sm && month[i]<12 || month[i] == sm )
+                        {
+                            if (date[i] > sd && date[i] <= 31)
+                            {
+                                Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                            }     
+                        }
+                        //else
+                        //{
+                        //    Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                        //}
+                   }
+                    else if(year[i]==ey)
+                    {
+                        if (month[i] > em && month[i] < 12 || month[i] == em)
+                        {
+                            if (date[i] > ed && date[i] <= 31)
+                            {
+                                Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                        }
+
+                    }
+                    else
+                    {
+                        if (month[i] > em && month[i]<sm && month[i] < 12 || month[i] == em || month[i]==sm)
+                        {
+                            if (date[i] > ed  || date[i]>sd && date[i] <= 31)
+                            {
+                                Console.WriteLine("{0}/{1}/{2}", date[i], month[i], year[i]);
+                            }
+                        }
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+

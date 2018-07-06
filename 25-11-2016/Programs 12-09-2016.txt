@@ -1,0 +1,164 @@
+
+
+1.Possible subsets of given length in string
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("Possible subsets of given length in string ");    
+      Console.WriteLine("Enter the string:\t");
+      string s=Console.ReadLine();
+      Console.WriteLine("Enter subset length:\t");
+      int l=int.Parse(Console.ReadLine());
+      int j=l-1;
+       int j = l - 1,i=0;
+       while(i<s.Length && (!(j>=s.Length )))
+        {
+            if (i < l - 1 && (!(j >=s.Length)))
+            {
+                Console.Write("{0}", s[i]);
+                i++;
+            }
+            if (i >= l - 1)
+            {
+                if (j < s.Length)
+                {
+                    Console.Write("{0}\n", s[j]);
+                    j = j + 1;
+                    i = 0;
+                }
+              
+            }
+              
+        }
+    }
+}
+
+
+2.Check a string is double string
+
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Check a string is double string");
+        Console.WriteLine("Enter the string:\t");
+        string s = "fgtfg";
+        string s1 = "", s2 = "", s3 = "";
+        int l = s.Length;
+        if (l % 2 == 0)
+        {
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (i < l / 2)
+                {
+                    s1 += s[i];
+                }
+                else
+                {
+                    s2 += s[i];
+                }
+            }
+            if (s1 == s2)
+            {
+                Console.WriteLine("Yes, Double string");
+            }
+            else
+            {
+                Console.WriteLine("No,not a double string");
+            }
+        }
+        else
+        {
+            for (int i = 0; i < s.Length; i++)
+            {
+                for (int j = 0; j < s.Length; j++)
+                {
+                   if (i != j)
+                    {
+                        s3 += s[j];
+                    }
+                    
+                }
+                Console.WriteLine("\n{0}", s3);
+                for (int a = 0; a < s3.Length; a++)
+                {
+                    if (a < s3.Length / 2)
+                    {
+                        s1 += s3[a];
+                    }
+                    else
+                    {
+                        s2 += s3[a];
+                    }
+                }
+                if (s1 == s2)
+                {
+                    Console.WriteLine("Yes, Double string");
+                    s3 = "";
+                    s1 = ""; s2 = "";
+                }
+                else
+                {
+                    Console.WriteLine("No,not a double string");
+                    s3 = "";
+                    s1 = ""; s2 = "";
+                } 
+            }
+        }
+    }
+}
+
+
+3.count K by which array has been rotated
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("count K by which array has been rotated");
+      Console.WriteLine("Enter the size of an array:\t");
+      int n=int.Parse(Console.ReadLine());
+      int[] a=new int[n];
+      int k;
+      Console.WriteLine("Enter the elements:\t");
+      for(int i=0;i<n;i++)
+      {
+        a[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("Output array:\n");
+      int[] b=new int[n];
+      for(int i=0;i<n;i++)
+      {
+        b[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<n;)
+      {
+        if(a[i]==b[n])
+        {
+          k=i+1;
+          Console.WriteLine("The array is rotated {0} times",k);
+          break;
+        }
+        else
+        {
+          i++;
+        }
+      }
+    }
+}
+
+
+
+4.

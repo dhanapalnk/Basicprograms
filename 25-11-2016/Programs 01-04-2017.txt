@@ -1,0 +1,205 @@
+
+1.Given an array of integers, write a function that returns true if there is a triplet (a, b, c) that satisfies a2 + b2 = c2.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication177
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given an array of integers, write a function that returns true if there is a triplet (a, b, c) that satisfies a2 + b2 = c2.");
+            Console.Write("Enter the array size:\t");
+            int s = int.Parse(Console.ReadLine());
+            int[] a = new int[s];
+            Console.Write("Enter the elements:\n");
+            for(int i=0;i<s;i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            for(int i=0;i<s-2;i++)
+            {
+                for(int j=i+1;j<s-1;j++)
+                {
+                    for(int k=j+1;k<s;k++)
+                    {
+                        if(a[i]*a[i]==((a[j]*a[j])+(a[k]*a[k])))
+                        {
+                            Console.Write("{0}={1}+{2}", a[i]*a[i], a[j]*a[j], a[k]*a[k]);
+                        }
+                        else if (a[j] * a[j] == ((a[i] * a[i]) + (a[k] * a[k])))
+                        {
+                            Console.Write("{0}={1}+{2}", a[j]*a[j], a[i]*a[i], a[k]*a[k]);
+                        }
+                        else if (a[k] * a[k] == ((a[i] * a[i]) + (a[j] * a[j])))
+                        {
+                            Console.Write("{0}={1}+{2}", a[k]*a[k], a[i]*a[i], a[j]*a[j]);
+                        }
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+2.Given an array of positive int, return a new array of length "count" containing the first even numbers from the original array. The original array will contain at least "count" even numbers.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication177
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Given an array of positive int, return a new array of length count containing the first even numbers from the original array. The original array will contain at least count even numbers.");
+            Console.Write("\nEnter the size of an array:\t");
+            int s = int.Parse(Console.ReadLine());
+            int[] a = new int[s];
+            Console.Write("\nEnter the elements:\n");
+            for(int i=0;i<s;i++)
+            {
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("\nEnter the length to print the even number in the array");
+            int l = int.Parse(Console.ReadLine());
+            int count = 0;
+            for(int i=0;i<s;i++)
+            {
+                if(a[i]%2==0)
+                {
+                    count++;
+                    if(count<=l)
+                    {
+                        Console.Write("\noutput:{0}\t", a[i]);
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3.Get the 3 int values from the user if they different from each other return their sum, if the values repeated return their non-repeating value
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication178
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the 3 int values");
+            int n1 = int.Parse(Console.ReadLine());
+            int n2 = int.Parse(Console.ReadLine());
+            int n3 = int.Parse(Console.ReadLine());
+            if ((n1 != n2) && (n2 != n3) && (n1 != n3))
+            {
+                Console.WriteLine("The given inputs are not repeated so their sum is : ");
+                Console.WriteLine(n1 + n2 + n3);
+            }
+            else if (n1 == n2)
+            {
+                Console.WriteLine("The given first two inputs are repeated so the non repeating input is : ");
+                Console.WriteLine(n3);
+            }
+            else if (n2 == n3)
+            {
+                Console.WriteLine("The given last two inputs are repeated so the non repeating input is : ");
+                Console.WriteLine(n1);
+            }
+            else if (n1 == n3)
+            {
+                Console.WriteLine("The given first and last inputs are repeated so the non repeating input is : ");
+                Console.WriteLine(n2);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+4.An integer input is accepted. find the square of individual digits and find their sum 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication178
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("An integer input is accepted. find the square of individual digits and find their sum ");
+            Console.WriteLine("Enter the number");
+            int n = int.Parse(Console.ReadLine());
+            int r = 0;
+            int sum = 0;
+            while (n > 0)
+            {
+                r = n % 10;
+                sum = sum + r * r;
+                n = n / 10;
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+5.Find the Lucas series 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication178
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Find the Lucas series ");
+            Console.WriteLine("Enter the limit");
+            int n = int.Parse(Console.ReadLine());
+            int l1 = 2, l2 = 1, l3 = 0;
+            Console.WriteLine("The Luscas Series");
+            Console.Write(l1 + " " + l2 + " ");
+            for (int i = 2; i < n; i++)
+            {
+                l3 = l1 + l2;
+                l1 = l2;
+                l2 = l3;
+                Console.Write(l3 + "  ");
+            }
+           Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,353 @@
+
+
+1.ISOMORPHIC STRINGS
+
+using System;
+using System.Collections;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("ISOMORPHIC STRINGS");   
+      Console.WriteLine("Enter string 1:\t");
+      string first=Console.ReadLine();
+      Console.WriteLine("Enter string 2:\t");
+      string second=Console.ReadLine();
+      bool result=isomorphic(first,second);
+      Console.WriteLine("{0}",result);
+    }
+  public static bool isomorphic(string first,string second)
+  {
+      List<char> string1=new List<char>();
+      List<char> string2=new List<char>();
+      int len1=first.Length;
+      int len2=second.Length;
+    if(len1!=len2)
+    {
+      return false;
+    }
+      if(len1==len2)
+      {
+        for(int i=0;i<len1;)
+        {
+          if(!(string1.Contains(first[i]) && string2.Contains(second[i])))
+          {
+            string1.Add(first[i]);
+            string2.Add(second[i]);
+            i++;
+          }
+          if(string1.Contains(first[i]))
+          {
+            for(int j=0;j<string1.Count;j++)
+            {
+              if(string2[j]==second[i])
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+            }
+          }
+        }
+        }
+        return true;
+  }
+      
+     
+}
+
+
+2.WORD THAT HAS GREATEST NUMBER OF REPEATED LETTERS IN THE GIVEN STRING
+
+
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("WORD THAT HAS GREATEST NUMBER OF REPEATED LETTERS IN THE GIVEN STRING");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      List<string> words=new List<string>();
+      string s="";
+      int times=0;
+      List<int> count=new List<int>();
+      for(int i=0;i<input.Length;i++)
+      {
+        if(input[i]!=' ')
+        {
+          s+=input[i];
+        }
+        else
+        {
+          words.Add(s);
+          s="";
+        }
+        if(i==input.Length-1)
+        {
+           words.Add(s);
+        }
+      }
+      foreach(string w in words)
+      {
+      	char[] c=w.ToCharArray();
+ 		
+        for(int i=0;i<c.Length;i++)
+        {
+          for(int j=i+1;j<c.Length;j++)
+          {
+            if(c[i]==c[j])
+            {
+             times+=1;
+            }
+            else
+            {
+              times+=0;
+            }
+          
+        }
+        
+      }
+        count.Add(times);
+        times=0;
+      }
+     
+      for(int i=0;i<count.Count;i++)
+      {
+        for(int j=i+1;j<count.Count;j++)
+        {
+          if(count[i]<count[j])
+          {
+            int temp=count[j];
+            count[j]=count[i];
+            count[i]=temp;
+            
+            string temp1=words[j];
+            words[j]=words[i];
+            words[i]=temp1;
+          }
+        }
+      }
+      Console.WriteLine("The word {0} has greatest number of repeated letters in the given string.",words[0]);
+     }
+}
+
+
+3.FIND THE UNIQUE ELEMENT IN AN ARRAY WHERE EVERY ELEMENT APPEARS TWICE
+
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("FIND THE UNIQUE ELEMENT IN AN ARRAY WHERE EVERY ELEMENT APPEARS TWICE.");
+      Console.WriteLine("Enter the size:\t");
+      int size =int.Parse(Console.ReadLine());
+      int[] input=new int[size];
+      int count=0;
+      Console.WriteLine("Enter the elements:\t");
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(input[i]>input[j])
+          {
+            int temp=input[j];
+            input[j]=input[i];
+            input[i]=temp;
+          }
+        }
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(input[i]==input[j] && i!=size-2)
+          {
+           i=i+2;
+            count+=0;
+          }
+          else
+          {
+            count+=1;
+          }
+      }
+         if(count==size-i-1)
+            {
+              Console.WriteLine("Unique element is:\t"+input[i]);
+            }
+     }
+    }
+}
+
+
+
+
+4.VALIDATE A STRING IS NUMERIC
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("VALIDATE A STRING IS NUMERIC");
+      Console.WriteLine("Input a string:\t");
+      string input=Console.ReadLine();
+      char[] c=input.ToCharArray();
+      string s="";
+      string s1="";
+      for(int i=0;i<input.Length;i++)
+      {
+       if( (!((c[i] >= 'a' && c[i]<= 'z'))) ||( (c[i]=='.') ||( c[i]=='-')||( c[i]==',')||(c[i]=='+')))
+        {
+          s+=c[i];
+        }
+        else
+        {
+           s1+=c[i];
+        }
+      }
+     
+      if(s==input)
+      {
+         Console.WriteLine("The given string {0} is numeric",input);
+      }
+      else
+      {
+         Console.WriteLine("The given string {0} is not numeric",input);
+      }
+     }
+}
+
+
+5.MERGE ALL OVERLAPPING INTERVALS
+
+using System;
+ using System.Collections.Generic;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("MERGE ALL OVERLAPPING INTERVALS");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[,] input=new int[size,size];
+      ArrayList interval=new ArrayList();
+      Console.Writeline("Enter the elements:\n");
+      for(int i=0;i<size;i++)
+      {
+        input[i,0]=int.Parse(Console.ReadLine());
+        input[i,1]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;)
+      {
+        if(input[i][0]<input[i][1])
+        {
+          interval.Add(input[i][0]);
+          if(input[i][1]>input[i+1][0])
+          {
+            interval.Add(",");
+          }
+          else
+          {
+            interval.Add(input[i][1]);
+          }
+        }
+        i=i+1;
+      }
+      
+     }
+}
+
+6.MINS BETWEEN TWO TIMES
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("MINS BETWEEN TWO TIMES");
+      Console.WriteLine("Enter the first time:\t");
+      string first=Console.ReadLine();
+      Console.WriteLine("Enter the second time:\t");
+      string second=Console.ReadLine();
+      string time1="";
+      string time2="";
+      decimal difference;
+      for(int i=0;i<first.Length-1;i++)
+      {
+       // if((first[i]&&second[i])!='a' || (first[i]&&second[i])!='p' || (first[i]&&second[i])!='m')
+        if((first[i]>=0 &&second[i]>=0) && (first[i]<10 &&second[i]<10) && first[i]=='.' && second[i]=='.')
+        {
+          time1+=first[i];
+          time2+=second[i];
+        }
+        else
+        {
+          decimal start=decimal.Parse(time1);
+          decimal end=decimal.Parse(time2);
+          if((first[i]=='A'&& second[i]=='A') || (first[i]=='P'&& second[i]=='P'))
+          {
+            if(end>start)
+            {
+              difference=end-start;
+            }
+            else
+            {
+            difference=start-end;
+            }
+          }
+          if(first[i]=='A' && second[i]=='P')
+          {
+            if(end>12.00M)
+            {
+              end+=12.00M;
+               if(end>start)
+            {
+               difference=end-start;
+            }
+            else
+            {
+          	 	difference=start-end;
+            }
+            }
+          }
+          if(first[i]=='P' && second[i]=='A')
+          {
+             if(end>start)
+            {
+            	difference=12.00M+(end-start);
+            }
+            else
+            {
+              	difference=12.00M+(start-end);
+            }
+             Console.WriteLine("The difference is {0}", difference);
+          }
+          
+        }
+       
+      }
+      
+     }
+}

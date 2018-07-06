@@ -1,0 +1,131 @@
+
+
+1.IP ADRESS COMBINATIONS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("IP ADRESS COMBINATIONS");
+      Console.WriteLine("Enter the number:\t");
+      long number=long.Parse(Console.ReadLine());
+      string final="",final1="";
+      string result="";
+      string s=number.ToString();
+      int l=s.Length;
+      int count=0,count1=0;
+      for(int i=0;i<l;i++)
+      {
+        result+=s[i];
+        count++;
+        int n=int.Parse(result);
+        if((count==3 && n<=255) ||( i==l-1))
+        {
+          final+=(result+".");
+          result="";
+          count=0;
+        }
+      }
+      
+      
+       for(int i=0;i<l;i++)
+      {
+        result+=s[i];
+        count++;
+        int n=int.Parse(result);
+        
+        if((count1==2 && count==2))
+        {
+          final1+=(result+".");
+          count1++;
+          result="";
+          count=0;
+        }
+        if((count==3 && n<=255)||(i==l-1))
+        {
+          final1+=(result+".");
+          count1++;
+          result="";
+          count=0;
+        }
+      }
+      
+      
+      Console.WriteLine("Output{0}",final);
+      Console.WriteLine("Output1 {0}",final1);
+    } 
+}
+
+
+2.JUSTIFICATION
+
+using System;
+ using System.Collections.Generic;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("JUSTIFICATION");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      string result="";
+      Console.WriteLine("Enter the length of characters in a line");
+      int l=int.Parse(Console.ReadLine());
+      string s="",s1="";
+      List<string> words=new List<string>();
+      int count=0;
+      for(int i=0;i<input.Length;i++)
+      {
+        if(input[i]!=' ')
+        {
+          s+=input[i];
+        }
+        else
+        {
+          s1+=s;
+          s="";
+          words.Add(s1);
+          s1="";
+        }
+        if(i==input.Length-1)
+        {
+            s1+=s;
+          s="";
+          words.Add(s1);
+          s1="";
+        }
+      }
+    for(int i=0;i<words.Count;i++)
+    {
+       count+=(words[i].Length+1);
+      
+       if((count<=l))
+      {
+       result+=(words[i]+" ");
+
+      }
+      else
+      {
+        Console.Write("{0}" , result);
+        Console.WriteLine("\n");
+        i=i-1;
+        count=0;
+       result=""; 
+      }
+      if(i==words.Count-1 && count<=l)
+      {
+        Console.Write("{0}",result);
+      }
+    } 
+      
+      
+     }
+}
+
+
+3.

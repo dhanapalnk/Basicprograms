@@ -1,0 +1,165 @@
+
+1.Shuffle the characters of a string without repeating same characters as ones neighbours
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication18
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Shuffle the characters of a string without repeating same characters as ones neighbours");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            char[] c = s.ToCharArray();
+            for(int a=0;a<s.Length-1;a++)
+            {
+                if(c[a]==c[a+1])
+                {
+                    for(int b=a+1;b<s.Length;)
+                    {
+                        if(c[b]==c[b+1])
+                        {
+                            b++;
+                        }
+                        if(c[b]!=c[b+1])
+                        {
+                            char temp = c[b + 1];
+                            c[b+1]=c[a+1];
+                            c[a+1] = temp;
+                            break;
+                        }
+                    }
+                }
+            }
+            foreach(char z in c)
+            {
+                Console.Write("{0}", z);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+2.Least number by deleting k digits
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication20
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Least number by deleting k digits");
+            Console.WriteLine("Enter the number:\t");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the value of k:\t");
+            int k = int.Parse(Console.ReadLine());
+            string s = n.ToString();
+            char[] c = s.ToCharArray();
+            for(int a=0;a<c.Length;a++)
+            {
+                for(int b=a+1;b<c.Length;b++)
+                {
+                    if((int)c[a]>(int)c[b])
+                    {
+                        char temp = c[b];
+                        c[b] = c[a];
+                        c[a] = temp;
+                    }
+                }
+            }
+            for(int z=0;z<c.Length-k;z++)
+            {
+                Console.Write("{0}", c[z]);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
+
+3.Decreasing order of number of ones in its binary representation
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication21
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Decreasing order of number of ones in its binary representation");
+            Console.WriteLine("Enter the size of an array:\t");
+            int n = int.Parse(Console.ReadLine());
+            int[] arr = new int[n];
+            string[] b = new string[n];
+            int j, count = 0;
+            string s = "";
+            Console.WriteLine("Enter the elements:\t");
+            for(int a=0;a<n;a++)
+            {
+                arr[a] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i < n;i++ )
+            {
+                int x = arr[i];
+                while(x>0)
+                {
+                    j = x % 2;
+                    x = x / 2;
+                    string k = j.ToString();
+                    s= k +s;   
+                }
+                b[i] = s;
+                s = "";
+            }
+            for (int i = 0; i < n;i++ )
+            {
+                count = 0;
+                for(int m=0;m<b[i].Length;m++)
+                {
+                    if(b[i][m]=='1')
+                    {
+                        count++;
+                    }
+                }
+                b[i]=(count.ToString());
+            }
+            for (int m = 0; m < b.Length - 1;m++ )
+            {
+                for(int n1=m+1;n1<b.Length;n1++)
+                {
+                    if((int.Parse(b[m]))>(int.Parse(b[n1])))
+                    {
+                        string temp = b[n];
+                        b[n] = b[m];
+                        b[m] = temp;
+                    }
+                }
+            }
+            foreach(string f in b)
+            {
+                Console.WriteLine("{0}", f);
+            }
+
+            Console.ReadLine();
+        }
+    }
+}

@@ -1,0 +1,284 @@
+
+1.Compute a new string by moving the first char to come after the next two chars.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication29
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Compute a new string by moving the first char to come after the next two chars.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            int count = 0;
+            char[] c = new char[3];
+            int x = 0;
+            for(int i=0;i<s.Length;)
+            {
+                int b = 1;
+                while(count<3 && i<(b+i))
+                {
+                    c[x] = s[i];
+                    x++;
+                    i++;
+                    count++;
+                }
+                
+                for (int j = 0; j < 2;j++ )
+                {
+                    char temp = c[j + 1];
+                    c[j + 1] = c[j];
+                    c[j] = temp;
+                }
+                foreach(char a in c)
+                {
+                    Console.Write("{0}", a);
+                }
+               
+                count = 0;
+                x = 0;
+                b=b+1;
+
+            } 
+            Console.ReadLine();
+        }
+    }
+}
+
+2.Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left and right are gone. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication29
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left and right are gone.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            for (int i = 0; i < s.Length-1; )
+            {
+                if(i!=s.Length-2 && s[i+1]!='*')
+                {
+                    Console.Write("{0}", s[i]);
+                    i++;
+                }
+                else
+                {
+                    i = i +3;
+                }
+                if(i==s.Length-2)
+                {
+                    if(s[i+1]!='*')
+                    {
+                        Console.Write("{0}{1}", s[i], s[i + 1]);
+                    }
+                }
+            }
+           Console.ReadLine();
+        }
+    }
+}
+
+
+3.count the number of times the second word in second string occurs in first string-case sensitive. 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication175
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("count the number of times the second word in second string occurs in first string-case sensitive.");
+            Console.WriteLine("Enter the first string:\t");
+            string first = Console.ReadLine();
+            Console.WriteLine("Enter the second string:\t");
+            string second = Console.ReadLine();
+            int c1 = 0, c2 = 0;
+            for (int i = 0; i < first.Length; i++)
+            {
+                if (first[i] == ' ')
+                {
+                    c1++;
+                }
+            }
+            for (int i = 0; i < second.Length; i++)
+            {
+                if (second[i] == ' ')
+                {
+                    c2++;
+                }
+            }
+            string[] a = new string[c1 + 1];
+            int a1 = 0;
+            string[] b = new string[c2 + 1];
+            string s = "";
+            for (int i = 0; i < first.Length; i++)
+            {
+                if (first[i] != ' ')
+                {
+                    s += first[i];
+                }
+                else
+                {
+                    a[a1] = s;
+                    a1++;
+                    s = "";
+                }
+                if (i == first.Length - 1)
+                {
+                    a[a1] = s;
+
+                }
+            }
+            foreach (string s1 in a)
+            {
+                Console.WriteLine("{0}", s1);
+            }
+            s = "";
+            a1 = 0;
+            for (int i = 0; i < second.Length; i++)
+            {
+                if (second[i] != ' ')
+                {
+                    s += second[i];
+                }
+                else
+                {
+                    b[a1] = s;
+                    a1++;
+                    s = "";
+                }
+                if (i == first.Length - 1)
+                {
+                    b[a1] = s;
+
+                }
+            }
+            foreach (string s2 in b)
+            {
+                Console.WriteLine("{0}", s2);
+            }
+            int c3 = 0;
+            for(int i=0;i<a.Length;i++)
+            {
+                if(a[i]==b[1])
+                {
+                    c3++;
+                }
+            }
+            Console.WriteLine("output:{0}", c3);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+4.Get all the numbers alone from the string and return the sum
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication175
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Get all the numbers alone from the string and return the sum.");
+            Console.WriteLine("Enter the string:\t");
+            string s = Console.ReadLine();
+            string temp = "";
+            for(int i=0;i<s.Length;i++)
+            {
+                if(s[i]>='0' && s[i]<='9')
+                {
+                    temp += s[i];
+                }
+            }
+            Console.Write("{0}", temp);
+            int n = int.Parse(temp);
+            int sum = 0;
+            while(n>0)
+            {
+                int a = n % 10;
+                n = n / 10;
+                sum += a;
+            }
+            Console.WriteLine("output-{0}", sum);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+5.Find the sum of the numbers in the given string array
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication175
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Get all the numbers alone from the string and return the sum.");
+            Console.Write("Enter the size of an array:\t");
+            int s = int.Parse(Console.ReadLine());
+            string[] arr = new string[s];
+            Console.WriteLine("Enter the elements:\t");
+            for(int i=0;i<s;i++)
+            {
+                arr[i] = Console.ReadLine();
+            }
+            string temp = "";
+            for(int i=0;i<s;i++)
+            {
+                for(int j=0;j<arr[i].Length;j++)
+                {
+                    if (arr[i][j] >= '0' && arr[i][j] <= '9')
+                    {
+                        temp += arr[i][j];
+                    }
+                }
+                
+            }
+            Console.Write("{0}", temp);
+            int n = int.Parse(temp);
+            int sum = 0;
+            while(n>0)
+            {
+                int a = n % 10;
+                n = n / 10;
+                sum += a;
+            }
+            Console.WriteLine("output-{0}", sum);
+            Console.ReadLine();
+        }
+    }
+}

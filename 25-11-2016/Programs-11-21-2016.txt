@@ -1,0 +1,301 @@
+
+
+1.GROUPING THE ANAGRAMS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("GROUPING THE ANAGRAMS");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size= int.Parse(Console.ReadLine());
+      Console.WriteLine("Enter the elements:\n");
+      string[] word=new string[size];
+      for(int i=0;i<size;i++)
+      {
+        word[i]=Console.ReadLine();
+      }
+      int[] position=new int[size];
+      string[] sort=new string[size];
+      string s="";
+      int a=0;
+      for(int i=0;i<size;i++)
+      {
+        position[i]=i;
+        sort[i]=word[i];
+      }
+     for(int i=0;i<size;i++)
+     {
+       char[] words=sort[i].ToCharArray();
+       for(int j=0;j<words.Length;j++)
+       {
+         for(int k=j+1;k<words.Length;k++)
+         {
+           if(words[j]>words[k])
+           {
+             char temp=words[k];
+             words[k]=words[j];
+             words[j]=temp;
+           }
+         }
+        
+       }
+        foreach(char c in words)
+         {
+           s+=c;
+         }
+         sort[a]=s;
+         s="";
+         a++;
+     }
+      foreach(string s1 in sort)
+      {
+        Console.WriteLine(s1);
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(sort[i][0]!=sort[j][0])
+          {
+          if(sort[i][0]>sort[j][0])
+          {
+            string temp=sort[j];
+            sort[j]=sort[i];
+            sort[i]=temp;
+            
+            int temp1=position[j];
+            position[j]=position[i];
+            position[i]=temp1;
+          }
+          }
+          else
+          {
+             if(sort[i][1]>sort[j][1])
+          {
+            string temp=sort[j];
+            sort[j]=sort[i];
+            sort[i]=temp;
+            
+            int temp1=position[j];
+            position[j]=position[i];
+            position[i]=temp1;
+          }
+          }
+        }
+      }
+      for(int i=0;i<size;i++)
+      {
+        Console.WriteLine("{0},{1}\n",sort[i],position[i]);
+      }
+      Console.WriteLine("SORTED");
+      for(int i=0;i<size;i++)
+      {
+        Console.WriteLine(word[position[i]]);
+      }
+     }
+}
+
+
+2.DETERMINE A NUMBER IS POWER OF TWO
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("DETERMINE A NUMBER IS POWER OF TWO");
+      Console.WriteLine("Enter a number:\t");
+      int number=int.Parse(Console.ReadLine());
+      int count=0,p=1;
+      int n=number;
+      while(n>0)
+      {
+        if(n%2==0)
+        {
+          count++;
+        }
+        n=n/2;
+       }
+      for(int i=0;i<count;i++)
+      {
+        p*=2;
+      }
+      
+      if(number==p)
+      {
+        Console.WriteLine("The given number {0} is power of 2",number);
+      }
+      else
+      {
+      Console.WriteLine("The given number {0} is not power of 2",number);
+      }
+     }
+}
+
+3.FIND GIVEN NUMBER IN AN ARRAY WHERE THE DIFFERENCE BETWEEN ADJACENT ELEMENTS IS 1
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("FIND GIVEN NUMBER IN AN ARRAY WHERE THE DIFFERENCE BETWEEN ADJACENT ELEMENTS IS 1");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      Console.WriteLine("Enter the elements:\n");
+      int[] input=new int[size];
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("Enter the number to find:\t");
+      int find=int.Parse(Console.ReadLine());
+      for(int i=0;i<size;i++)
+      {
+        if(find==input[i])
+        {
+          Console.WriteLine("The given number {0} is found at the index {1} ",find,i);
+         break;
+        }
+      }
+     }
+}
+
+
+4.FIND THE MAXIMUM ELEMENT IN A BITONIC ARRAY
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("FIND THE MAXIMUM ELEMENT IN A BITONIC ARRAY");
+      Console.WriteLine("Enter the size:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[] input=new int[size];
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<size;i++)
+      {
+        input[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(input[i]<input[j])
+          {
+            int temp=input[j];
+            input[j]=input[i];
+            input[i]=temp;
+          }
+        }
+      }
+      Console.WriteLine("The maximum element in the bitonic array is {0}",input[0]);
+     }
+}
+
+
+5.PRINT THE CHARACTERS OF A STRING IN A CROSS MARK
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("PRINT THE CHARACTERS OF A STRING IN A CROSS MARK");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      int l=input.Length;
+      int mid=l/2;
+      for(int i=0;i<=mid;i++)
+      {
+        for(int j=0;j<l;j++)
+        {
+          if(i==j || j==l-1)
+          {
+             Console.Write("{0}\t",input[j]);
+          }
+          else
+          {
+            Console.Write("\t");
+          }
+          
+        }
+        Console.Write("\n");
+        l=l-1;
+      }
+      l=input.Length;
+      mid=l/2;
+      for(int i=mid+1;i<l;i++)
+      {
+        for(int j=0;j<l;j++)
+        {
+          if(i==j || j==l-1-i)
+          {
+            Console.Write("{0}\t",input[j]);
+          }
+          else
+          {
+            Console.Write("\t");
+          }
+        }
+        Console.Write("\n");
+        mid=mid+1;
+      }
+     }
+}
+
+6.ISOMORPHIC STRINGS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        
+       Console.WriteLine("ISOMORPHIC STRINGS");
+       string str = "turtle";
+       string str1 = "tletur";
+       ArrayList a = new ArrayList();
+       ArrayList b = new ArrayList();
+       for (int i = 0; i < str.Length; i++)
+       {
+        for(int j=i+1;j<str1.Length;j++)
+        {
+          if(str[i]==str[j] || str[i]!=str[j] && str1[i] == str1[j] || str1[i] != str1[j])
+          {
+            if((!(a.Contains(str[i]))) && (!(b.Contains(str1[i]))))
+             {
+                a.Add(str[i]);
+                 b.Add(str1[i]);
+             }
+           }
+         }
+        }
+            foreach(char c in a)
+            {
+                Console.Write(c);
+            }
+            Console.Write("\n");
+            foreach (char c in b)
+            {
+                Console.Write(c);
+            }
+     }
+}
+
+

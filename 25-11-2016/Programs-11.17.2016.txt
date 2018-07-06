@@ -1,0 +1,441 @@
+
+1.ISBN NUMBER OR NOT
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("ISBN NUMBER OR NOT");
+      Console.WriteLine("Enter the number:\t");
+      int number=int.Parse(Console.ReadLine());
+      int sum=0,i=1,n=number;
+      int  length=(number.ToString()).Length;
+      while(number > 0)
+      {
+        n=number%10;
+        number=number/10;
+        
+        if(i <= length)
+        {
+          sum+=(n*i);
+        }
+        i++;
+      }
+      Console.WriteLine("Sum is {0}",sum);
+      if(sum%11==0)
+      {
+        Console.WriteLine("ISBN NUMBER");
+      }
+      else
+      {
+        Console.WriteLine("Not");
+      }
+        
+      
+     }
+}
+
+2.FIND THE OLDEST DATE
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("FIND THE OLDEST DATE");
+      Console.WriteLine("The inuput date should be in DD-MM-YYYY format");
+      Console.WriteLine("Input the number of dates to be entered:\t");
+      int number=int.Parse(Console.ReadLine());
+      string[] dates=new string[number];
+      int[] dd=new int[number];
+      int[] mm=new int[number];
+      int[] yyyy=new int[number];
+      string empty="";
+      string final="";
+      int count=1,temp;
+      Console.WriteLine("Enter the dates:\t");
+      for(int i=0;i<number;i++)
+      {
+        dates[i]=Console.ReadLine();
+      }
+       for(int i=0;i<number;i++)
+       {
+         for(int j=0;j<dates[i].Length;j++)
+         {
+           if(dates[i][j]!='-')
+           {
+             empty+=dates[i][j];
+           }
+           else
+           {
+             final+=empty;
+             int d=int.Parse(final);
+             empty="";
+             if(count==1)
+             {
+               dd[i]=d;
+               count++;
+             }
+             else
+             {
+               mm[i]=d;
+               count=1;
+             }
+             final="";
+           }
+           if(j==dates[i].Length-1)
+           {
+             final+=empty;
+             int d=int.Parse(final);
+             empty="";
+             yyyy[i]=d;
+             final="";
+           }
+         }
+       }
+      
+      for(int i=0;i<yyyy.Length;i++)
+      {
+        for(int j=i+1;j<yyyy.Length;j++)
+        {
+          if(yyyy[i]!=yyyy[j])
+          {
+            if(yyyy[i]>yyyy[j])
+            {
+              temp=yyyy[j];
+              yyyy[j]=yyyy[i];
+              yyyy[i]=temp;
+              
+              temp=mm[j];
+              mm[j]=mm[i];
+              mm[i]=temp;
+              
+              temp=dd[j];
+              dd[j]=dd[i];
+              dd[i]=temp;
+            }
+          }
+          else
+          {
+            if(mm[i]!=mm[j])
+            {
+               if(mm[i]>mm[j])
+               {
+              temp=mm[j];
+              mm[j]=mm[i];
+              mm[i]=temp;
+              
+              temp=dd[j];
+              dd[j]=dd[i];
+              dd[i]=temp;
+            }
+              
+            }
+            if(dd[i]!=dd[j])
+            {
+               temp=dd[j];
+              dd[j]=dd[i];
+              dd[i]=temp;
+            }
+          }
+        }
+      }
+     
+      
+          Console.Write("{0}/{1}/{2}",mm[0],dd[0],yyyy[0]);
+        
+     
+     }
+}
+
+3.REVERSE THE STRING USING RECURSION
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("REVERSE THE STRING USING RECURSION");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      Reverse(input);
+    }
+  private static void Reverse(string b)
+  {
+      string s="";
+      List<String> s1=new List<String>();
+     
+      for(int i=0;i<b.Length;i++)
+      {
+        if(b[i]!=' ')
+        {
+          s+=b[i];
+        }
+        else
+        {
+          s1.Add(s);
+          s="";
+        }
+        if(i==b.Length-1)
+        {
+          s1.Add(s);
+          s="";
+        }
+       
+      }
+      Console.WriteLine("The reverse is:");
+    for(int i=s1.Count-1;i>=0;i--)
+    {
+     Console.Write("\t {0}",s1[i]);
+    }
+     }
+}
+
+4.FLOYD'S TRIANGLE
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("FLOYD'S TRIANGLE");
+      Console.WriteLine("Enter the now of rows:\t");
+      int row=int.Parse(Console.ReadLine());
+      int value=1;
+      for(int i=0;i<=row;i++)
+      {
+        for(int j=1;j<=i;j++)
+        {
+          Console.Write("\t"+(value));
+         value++;
+          
+        }
+    Console.WriteLine("\n");
+      }
+     }
+}
+
+5.SUM OF MIDDLE ELEMENTS OF THE ARRAY OBTAINED AFTER MERGING THE GIVEN ARRAYS
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+       Console.WriteLine("SUM OF MIDDLE ELEMENTS OF THE ARRAY OBTAINED AFTER MERGING THE GIVEN ARRAYS ");
+      Console.WriteLine("Enter the size of array A:\t");
+      int A=int.Parse(Console.ReadLine());
+      int[] arrayA=new int[A];
+      int k=0,k1=0,sum;
+      Console.WriteLine("Enter  the elements of array A:\t");
+      for(int i=0;i<A;i++)
+      {
+        arrayA[i]=int.Parse(Console.ReadLine());
+      }
+      Console.WriteLine("Enter the size of array B:\t");
+      int B=int.Parse(Console.ReadLine());
+      int[] arrayB=new int[B];
+      Console.WriteLine("Enter  the elements of array B:\t");
+      for(int i=0;i<B;i++)
+      {
+        arrayB[i]=int.Parse(Console.ReadLine());
+      }
+      int C=A+B;
+      int[] arrayC=new int[C];
+      for(int i=0;i<C;i++)
+      {
+        if(i<A)
+        {
+          arrayC[i]=arrayA[k];
+          k++;
+        }
+        else
+        { 
+          arrayC[i]=arrayB[k1];
+         k1++;
+        }
+      }
+      Console.Write("The elements of array C are:\n");
+      foreach(int element in arrayC)
+      {
+        Console.WriteLine("{0}",element);
+      }
+      int middle=C/2;
+      if(C%2==0)
+      {
+        sum=arrayC[middle]+arrayC[middle-1];
+      }
+      else
+      {
+        sum=arrayC[middle];
+      }
+      Console.Write("Sum of the middle elements is {0}",sum);
+     }
+}
+
+6.MINIMUM DIFFERENCE BETWEEN ANY TWO ELEMENTS IN AN ARRAY
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("MINIMUM DIFFERENCE BETWEEN ANY TWO ELEMENTS IN AN ARRAY");
+      Console.WriteLine("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      int[] arr=new int[size];
+      int diff,temp;
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<size;i++)
+      {
+        arr[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          if(arr[i]<arr[j])
+          {
+            temp=arr[j];
+            arr[j]=arr[i];
+            arr[i]=temp;
+          }
+        }
+      }
+      Console.Write("AFTER SORTING \n");
+      foreach(int x in arr)
+      {
+        Console.WriteLine(x);
+      }
+      int minimum=arr[0]-arr[1];
+      int element1,element2;
+      for(int i=0;i<size;i++)
+      {
+        for(int j=i+1;j<size;j++)
+        {
+          diff=arr[i]-arr[j];
+          if(diff<minimum)
+          {
+            minimum=diff;
+            element1=arr[i];
+            element2=arr[j];
+            Console.WriteLine("Minimum difference is {0} between {1} and {2}",minimum,element1,element2);
+          }
+         
+        } 
+       
+      }
+     
+     }
+}
+
+7.SECOND SMALLEST ELEMENT IN AN ARRAY
+
+using System;
+ using System.Collections.Generic;
+using System.Collections;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("SECOND SMALLEST ELEMENT IN AN ARRAY");
+      Console.Write("Enter the size of an array:\t");
+      int size=int.Parse(Console.ReadLine());
+      ArrayList a=new ArrayList();
+      int[] arr=new int[size];
+     int temp,count=0,small;
+      Console.WriteLine("Enter the elements:\n");
+      for(int i=0;i<size;i++)
+      {
+        arr[i]=int.Parse(Console.ReadLine());
+      }
+      for(int i=0;i<size;i++)
+      {
+       for(int j=i+1;j<size;j++)
+        {
+          if(arr[i]>arr[j])
+          {
+            temp=arr[j];
+            arr[j]=arr[i];
+            arr[i]=temp;
+          }
+        }
+      }
+      foreach(int X in arr)
+      {
+        Console.WriteLine(X);
+      }
+    for(int i=0;i<size;i++)
+    {
+      for(int j=i+1;j<size;j++)
+      {
+       if(arr[i]==arr[j])
+        {
+          arr[j]=' ';
+        }
+           
+      }
+      
+    }
+      
+      foreach(int x in arr)
+      {
+        if(x!=' ')
+        {
+          a.Add(x);
+          count++;
+          if(count==2)
+          {
+             Console.Write("Second smallest element is {0}",x);
+          }
+        }
+      }
+     
+    }
+}
+
+
+8.SWAP EVEN AND ODD CHARACTERS IN THE GIVEN STRING
+
+using System;
+ using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+      Console.WriteLine("SWAP EVEN AND ODD CHARACTERS IN THE GIVEN STRING");
+      Console.WriteLine("Enter the string:\t");
+      string input=Console.ReadLine();
+      char[] c=input.ToCharArray();
+      char temp;
+      for(int i=0;i<c.Length;i++)
+      {
+        if(i%2==0)
+        {
+          temp=c[i+1];
+          c[i+1]=c[i];
+          c[i]=temp;
+        }
+      }
+      Console.Write("After Swapping:");
+      foreach(char c1 in c)
+      {
+        Console.Write(c1);
+      }
+     }
+}

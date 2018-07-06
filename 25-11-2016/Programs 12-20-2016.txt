@@ -1,0 +1,143 @@
+
+
+1.Add two digit prime number to get the input
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication17
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Add two digit prime number to get the input");
+            Console.WriteLine("Enter the input:\t");
+            int n = int.Parse(Console.ReadLine());
+            int count, x = 0, p = 0;
+            int[] sum = new int[(n/2)/2];
+            for (int a = 10; a < n;a++ )
+            {
+                count = 0;
+                for(int b=1;b<=a;b++)
+                {
+                    if(a%b==0)
+                    {
+                        count++;
+                    }   
+                }
+                if(count==2)
+                {
+                    sum[x] = a;
+                    x++;
+                }
+            }
+            for (int a = 0; a < sum.Length;a++)
+            {
+                for(int b=a+1;b<sum.Length;b++)
+                {
+                    p += (sum[a] + sum[b]);
+                    if (p == n)
+                    {
+                        for (int c = b; c >= 0; c--)
+                        {
+                            if (c == 0)
+                            {
+                                Console.Write("{0}", sum[c]);
+                            }
+                            else
+                            {
+                                Console.Write("{0}+", sum[c]);
+                            }
+                        }
+                    }
+                    while(p<n)
+                    {
+                        b++;
+                        p += sum[b];
+                        if (p == n)
+                        {
+                            for (int c = b; c >= 0; c--)
+                            {
+                                if (c == 0)
+                                {
+                                    Console.Write("{0}", sum[c]);
+                                }
+                                else
+                                {
+                                    Console.Write("{0}+", sum[c]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+                Console.ReadLine();
+        }
+    }
+}
+
+
+2.Delete one of two consecutive digits and return greatest of all results
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication17
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Delete one of two consecutive digits and return greatest of all results.");
+            Console.WriteLine("Enter the integer:\t");
+            int n = int.Parse(Console.ReadLine());
+            string s = n.ToString(),s1="";
+            for (int a = 0; a < s.Length-1;)
+            {
+                if (s[a] == s[a + 1])
+                {
+                    s1 += s[a];
+                    for (int b = a + 2; b < s.Length; b++)
+                    {
+                        s1 += s[b];
+                    }
+                }
+                else
+                {
+                    s1 += s[a];
+                    s1 += s[a + 1];
+                    a = a + 2;
+                }
+                if (a == s.Length - 2)
+                {
+                    if (s[a] == s[a + 1])
+                    {
+                        s1 += s[a];
+                    }
+                    else
+                    {
+                        s1 += s[a];
+                        s1 += s[a + 1];
+                    }
+                    Console.WriteLine("{0}", s1);
+                    break;
+                }
+                    Console.WriteLine("{0}", s1);
+                    s1 = "";
+                    a = a + 2;
+                    for (int c = 0; c < a; c++)
+                    {
+                        s1 += s[c];
+                    }
+            }
+            Console.ReadLine();
+        }
+    }
+}
